@@ -3,6 +3,9 @@ const router = express.Router()
 
 const User = require('../models/User')
 
+//algunas rutas json para poder filtrar los perros
+
+
 /* GET home page. */
 // router.post('/recipes', async (req, res, next) => {
 //   const { title, level, cuisine, duration } = req.body

@@ -7,7 +7,6 @@ const bcrypt = require('bcrypt')
 const saltRounds = 10
 const { isLoggedIn, isNotLoggedIn, isFormFilled } = require('../middlewares/authMiddlewares')
 
-/* GET home page. */
 router.get('/signup', isLoggedIn, (req, res, next) => {
   const data = {
     messages: req.flash('errorFormNotFielled'),
@@ -39,14 +38,14 @@ router.post('/signup', isLoggedIn, isFormFilled, async (req, res, next) => {
   }
 })
 
-router.get('/login', (req, res, next) => {
+router.get('/', (req, res, next) => {
   const data = {
     messages: req.flash('noUser'),
     name: req.flash('name'),
     password: req.flash('passwordBad')
   }
   console.log(data)
-  res.render('login', data)
+  res.render('index', data)
 })
 
 router.post('/login', async (req, res, next) => {
