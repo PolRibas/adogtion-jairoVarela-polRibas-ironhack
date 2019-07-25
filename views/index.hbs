@@ -11,4 +11,19 @@
         <button type="submit">go go go!!</button>
     </form>
 </section>
+{{#if messages.length}}
+        <ul class="validation">
+            <li>{{messages.[0]}}</li>
+        </ul>
+    {{/if}}
+    {{#if password.length}}
+        <ul class="validation">
+            <li>{{password.[0]}}</li>
+        </ul>
+    {{/if}}
+    {{#if name.length}}
+    <ul class="validation">
+        <li>{{name.[0]}}</li>
+    </ul>
+{{/if}}
 <a href="/auth/signup">Signup</a>
