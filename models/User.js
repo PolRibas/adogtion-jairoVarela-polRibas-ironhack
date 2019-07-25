@@ -16,6 +16,10 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
+  type:{
+    type: String,
+    default: 'User'
+  },
   email: String,
   age: Number,
   city: String,

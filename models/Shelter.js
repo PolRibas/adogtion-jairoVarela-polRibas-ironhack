@@ -30,6 +30,10 @@ const shelterSchema = new Schema({
   adress: {
     type: String
   },
+  type:{
+    type: String,
+    default: 'Shelter'
+  },
   dogs: [{
     type: ObjectId,
     ref: 'Dog'
