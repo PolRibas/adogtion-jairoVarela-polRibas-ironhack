@@ -78,30 +78,30 @@ router.post('/login', async (req, res, next) => {
   try {
     const user = await User.findOne({ username })
     const shelter = await Shelter.findOne({ username })
+    console.log(user , shelter)
     if (user) {
       if (bcrypt.compareSync(password, user.password)) {
         req.session.currentUser = user
-        res.redirect('/')
+        return res.redirect('/')
       } else {
         req.flash('passwordBad', 'This is not the password for this user')
         req.flash('name', username)
-        res.redirect('/')
+        return res.redirect('/')
       }
     } else if (shelter) {
         if (bcrypt.compareSync(password, shelter.password)) {
             req.session.currentUser = shelter
-            res.redirect('/')
+            return res.redirect('/')
           } else {
             req.flash('passwordBad', 'This is not the password for this user')
             req.flash('name', username)
-            res.redirect('/')
+            return res.redirect('/')
           }
     } else {
       req.flash('noUser', 'Is not user with this username')
       req.flash('name', username)
-      res.redirect('/')
+      return res.redirect('/')
     }
-    res.redirect('/')
   } catch (error) {
     next(error)
   }

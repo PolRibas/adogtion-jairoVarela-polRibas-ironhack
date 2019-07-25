@@ -32,7 +32,7 @@ const dogSchema = new Schema({
     type: String
   },
   status: {
-    type: Array,
+    type: String,
     enum: ['Liked', 'Matched', 'Accepted', 'Adopted']
   }
 }, {

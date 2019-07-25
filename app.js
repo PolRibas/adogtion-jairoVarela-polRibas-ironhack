@@ -11,13 +11,13 @@ const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
 
 const indexRouter = require('./routes/index')
-const usersRouter = require('./routes/users')
+const usersRouter = require('./routes/app')
 const authRouter = require('./routes/auth')
 const apiRouter = require('./routes/api')
 
 const app = express()
 
-mongoose.connect('mongodb://localhost/myFirstSession', {
+mongoose.connect('mongodb://localhost/adogtion', {
   keepAlive: true,
   useNewUrlParser: true,
   reconnectTries: Number.MAX_VALUE
@@ -55,7 +55,7 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/', indexRouter)
-app.use('/users', usersRouter)
+app.use('/app', usersRouter)
 app.use('/auth', authRouter)
 app.use('/api', apiRouter)
 
