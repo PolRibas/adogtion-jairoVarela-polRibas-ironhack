@@ -13,7 +13,6 @@ const MongoStore = require('connect-mongo')(session)
 const indexRouter = require('./routes/index')
 const usersRouter = require('./routes/users')
 const authRouter = require('./routes/auth')
-const chatRouter = require('./routes/chat')
 const apiRouter = require('./routes/api')
 
 const app = express()
@@ -58,7 +57,6 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use('/', indexRouter)
 app.use('/users', usersRouter)
 app.use('/auth', authRouter)
-app.use('/chat', chatRouter)
 app.use('/api', apiRouter)
 
 app.use((req, res, next) => {
