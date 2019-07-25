@@ -4,7 +4,7 @@
             <input type="text" name="username" id="username" required placeholder="Username">
         </label>
         <label>Password:
-            <input type="password" name="password" id="password" placeholder="Password">
+            <input type="password" name="password" id="password" required placeholder="Password">
         </label>
         <label>Password comprobation:
             <input type="password" name="passwordtwo" id="passwordtwo" required placeholder="Password">
@@ -12,4 +12,19 @@
         <button type="submit">Signup!!</button>
     </form>
 </section>
-<a href="/">back</a>
+
+{{#if messages.length}}
+    <ul class="validation">
+        <li>{{messages.[0]}}</li>
+    </ul>
+{{/if}}
+{{#if password.length}}
+    <ul class="validation">
+        <li>{{password.[0]}}</li>
+    </ul>
+{{/if}}
+{{#if name.length}}
+    <ul class="validation">
+        <li>{{name.[0]}}</li>
+    </ul>
+{{/if}}
