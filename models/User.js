@@ -10,25 +10,20 @@ const userSchema = new Schema({
     required: true,
     unique: true
   },
-  firstName: {
-    type: String,
-    required: true
-  },
-  surName: {
-    type: String,
-    required: true
-  },
+  name: String,
+  surName: String,
   password: {
     type: String,
     required: true
   },
-  recipes: [{
+  email: String,
+  age: Number,
+  city: String,
+  ocupation: String,
+  civilStatus: String,
+  Notes: [{
     type: ObjectId,
-    ref: 'Recipe'
-  }],
-  chat: [{
-    type: ObjectId,
-    ref: 'Chat'
+    ref: 'Notes'
   }]
 }, {
   timestamps: true
