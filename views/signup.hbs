@@ -3,24 +3,28 @@
         <label>Username:
             <input type="text" name="username" id="username" required placeholder="Username">
         </label>
-        <label>First Name:
-            <input type="text" name="firstName" id="firstName" required placeholder="first Name">
-        </label>
-        <label>Surname:
-            <input type="text" name="surName" id="surName" required placeholder="surName">
-        </label>
         <label>Password:
-            <input type="password" name="password" id="password" placeholder="Password">
+            <input type="password" name="password" id="password" required placeholder="Password">
         </label>
         <label>Password comprobation:
             <input type="password" name="passwordtwo" id="passwordtwo" required placeholder="Password">
         </label>
         <button type="submit">Signup!!</button>
     </form>
-    {{#if messages.length}}
-        <ul class="validation">
-            {{#each messages}}<li>{{this}}</li>{{/each}}
-        </ul>
-    {{/if}}
 </section>
-<a href="/">back</a>
+
+{{#if messages.length}}
+    <ul class="validation">
+        <li>{{messages.[0]}}</li>
+    </ul>
+{{/if}}
+{{#if password.length}}
+    <ul class="validation">
+        <li>{{password.[0]}}</li>
+    </ul>
+{{/if}}
+{{#if name.length}}
+    <ul class="validation">
+        <li>{{name.[0]}}</li>
+    </ul>
+{{/if}}

@@ -10,17 +10,20 @@ const { isLoggedIn, isNotLoggedIn, isFormFilled } = require('../middlewares/auth
 /* GET home page. */
 router.get('/signup', isLoggedIn, (req, res, next) => {
   const data = {
-    messages: req.flash('errorFormNotFielled')
+    messages: req.flash('errorFormNotFielled'),
+    name: req.flash('name'),
+    password: req.flash('passwordBad')
   }
   res.render('signup', data)
 })
 
 router.post('/signup', isLoggedIn, isFormFilled, async (req, res, next) => {
   if (req.body.password !== req.body.passwordtwo) {
+    req.flash('passwordBad', 'This is not the password for this user')
     return res.redirect('/auth/signup')
   }
   try {
-    const { username, firstName, surName, password } = req.body
+    const { username, password } = req.body
     const user = await User.findOne({ username })
     if (user) {
       req.flash('errorUserFind', 'This username is allready registred')
@@ -28,7 +31,7 @@ router.post('/signup', isLoggedIn, isFormFilled, async (req, res, next) => {
     }
     const salt = bcrypt.genSaltSync(saltRounds)
     const hashedPassword = bcrypt.hashSync(password, salt)
-    const newUser = await User.create({ username, firstName, surName, password: hashedPassword })
+    const newUser = await User.create({ username, password: hashedPassword })
     req.session.currentUser = newUser
     res.redirect('/')
   } catch (error) {
