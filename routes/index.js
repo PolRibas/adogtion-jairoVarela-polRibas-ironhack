@@ -5,14 +5,12 @@ const User = require('../models/User.js')
 
 /* GET home page. */
 router.get('/', async (req, res, next) => {
-  if (req.session.currentUser) {
-    //es un Usuario
+  if (req.session.currentUser.type = 'User') {
     return res.render('homeForUser')
-    //es un Shelter
-    // return res.render('homeForShelter')
+  } else if (req.session.currentUser.type = 'Shelter') {
+   return res.render('homeForShelter')
   }
   res.render('index')
-  // Pagina inicial con login + splash inicial de entrar + botton signup: auth/signup
 })
 
 module.exports = router

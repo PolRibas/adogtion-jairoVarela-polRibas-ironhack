@@ -16,7 +16,7 @@ router.get('/signup', isLoggedIn, (req, res, next) => {
   res.render('signup', data)
 })
 
-router.post('/signup', isLoggedIn, isFormFilled, async (req, res, next) => {
+router.post('/signupUser', isLoggedIn, isFormFilled, async (req, res, next) => {
   if (req.body.password !== req.body.passwordtwo) {
     req.flash('passwordBad', 'This is not the password for this user')
     return res.redirect('/auth/signup')
@@ -38,6 +38,28 @@ router.post('/signup', isLoggedIn, isFormFilled, async (req, res, next) => {
   }
 })
 
+router.post('/signupShelter', isLoggedIn, isFormFilled, async (req, res, next) => {
+    if (req.body.password !== req.body.passwordtwo) {
+      req.flash('passwordBad', 'This is not the password for this user')
+      return res.redirect('/auth/signup')
+    }
+    try {
+      const { username, password } = req.body
+      const user = await Shelter.findOne({ username })
+      if (user) {
+        req.flash('errorUserFind', 'This username is allready registred')
+        return res.redirect('/auth/signup')
+      }
+      const salt = bcrypt.genSaltSync(saltRounds)
+      const hashedPassword = bcrypt.hashSync(password, salt)
+      const newShelter = await Shelter.create({ username, password: hashedPassword })
+      req.session.currentUser = newShelter
+      res.redirect('/')
+    } catch (error) {
+      next(error)
+    }
+  })
+
 router.get('/', (req, res, next) => {
   const data = {
     messages: req.flash('noUser'),
@@ -48,7 +70,7 @@ router.get('/', (req, res, next) => {
   res.render('index', data)
 })
 
-router.post('/login', async (req, res, next) => {
+router.post('/loginUser', async (req, res, next) => {
   const { username, password } = req.body
   try {
     const user = await User.findOne({ username })
@@ -71,6 +93,30 @@ router.post('/login', async (req, res, next) => {
     next(error)
   }
 })
+
+router.post('/loginShelter', async (req, res, next) => {
+    const { username, password } = req.body
+    try {
+      const user = await Shelter.findOne({ username })
+      if (user) {
+        if (bcrypt.compareSync(password, user.password)) {
+          req.session.currentUser = user
+          res.redirect('/')
+        } else {
+          req.flash('passwordBad', 'This is not the password for this user')
+          req.flash('name', username)
+          res.redirect('/auth/login')
+        }
+      } else {
+        req.flash('noUser', 'Is not user with this username')
+        req.flash('name', username)
+        res.redirect('/auth/login')
+      }
+      res.redirect('/')
+    } catch (error) {
+      next(error)
+    }
+  })
 
 router.post('/logout', isNotLoggedIn, (req, res, next) => {
   delete req.session.currentUser
