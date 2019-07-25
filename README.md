@@ -4,9 +4,7 @@
 
 Express app for connecting animal shelters with users that want to adopt a new pet.
 
-This app has two differents users:
-    - User
-    - Shelter
+This app has two differents users: User & Shelter
  
 ## User Stories
 
