@@ -27,7 +27,7 @@ const shelterSchema = new Schema({
   website: {
     type: String
   },
-  adress: {
+  address: {
     type: String
   },
   type:{
