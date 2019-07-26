@@ -10,16 +10,22 @@ const Notes = require('../models/Notes.js')
 router.get('/', async (req, res, next) => {
 try{
   if(req.session.currentUser){
-      const dogs = await Dogs.find()
+      const dogs = await Dogs.find().populate('shelter')
       const user = req.session.currentUser;
     if (req.session.currentUser.type === 'User') {
-        return res.render('users/feed', dogs)
+        return res.render('users/feed', {dogs})
     } else if (req.session.currentUser.type === 'Shelter') {
         let shelterdog = [];
-        for (shelter in dogs){
-
+        for (dog in dogs){
+            if(dogs[dog].shelter[0].username === user.username){
+                shelterdog.push(dogs[dog])
+            }
         }
-        return res.render('shelters/feed', {dogs})
+        if(shelterdog.length === 0){
+            const nonDogs = {};
+            return res.render('shelters/feed', {nonDogs})
+        }
+        return res.render('shelters/feed', {shelterdog})
     }
   }
   res.render('index')
