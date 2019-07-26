@@ -1,17 +1,47 @@
 
 <section>
-    <form action="/auth/signup" method="POST">
+
+    <form action="/app/changePhoto" method="POST" enctype="multipart/form-data">
+        <label for="image">
+            <input onchange="this.form.submit()" type="file" name="image" id="image" style="display:none;"/>
+            <img src="{{image}}" width="200px"/>
+         </label>
+
+    </form>
+    <h2>Username: {{username}}</h2>
+    <h3>Name: {{name}} {{surName}}</h3>
+    <p>Email: {{email}}</p>
+    <p>Age: {{age}}</p>
+    <p>city: {{city}}</p>
+    <p>ocupation: {{ocupation}}</p>
+    <p>Civil Status: {{civilStatus}}</p>
+    {{>pencil}}
+    <form action="/app/profile/update" method="POST">
         <label>Username:
             <input type="text" name="username" id="username" disabled value="{{username}}" >
         </label>
         <label>First Name:
-            <input type="text" name="name" id="name" placeholder="first Name">
+            <input type="text" name="name" id="name" placeholder="first Name" value="{{name}}">
         </label>
         <label>Surname:
-            <input type="text" name="surName" id="surName" placeholder="surName">
+            <input type="text" name="surName" id="surName" placeholder="surName" value="{{surName}}">
         </label>
-        <button type="submit">Signup!!</button>
+        <label>Email:
+            <input type="text" name="email" id="email" placeholder="email" value="{{email}}">
+        </label>
+        <label>Age:
+            <input type="Number" name="age" id="age" placeholder="age" value="{{age}}">
+        </label>
+        <label>City:
+            <input type="text" name="city" id="city" placeholder="city" value="{{city}}">
+        </label>
+        <label>Ocupation:
+            <input type="text" name="ocupation" id="ocupation" placeholder="ocupation" value="{{ocupation}}">
+        </label>
+        <label>Civil Status:
+            <input type="text" name="civilStatus" id="civilStatus" placeholder="civilStatus" value="{{civilStatus}}">
+        </label>
+        <button type="submit">Update</button>
     </form>
-<h1>{{username}}</h1>
 
 {{>navUser}}
