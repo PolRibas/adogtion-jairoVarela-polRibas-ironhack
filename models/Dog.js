@@ -29,7 +29,8 @@ const dogSchema = new Schema({
     type: String
   },
   image: {
-    type: String
+    type: String,
+    default: 'https://st-listas.20minutos.es/images/2013-11/371972/4234737_640px.jpg?1383885591'
   },
   shelter: [{
     type: ObjectId,

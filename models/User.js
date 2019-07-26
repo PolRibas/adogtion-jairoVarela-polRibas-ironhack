@@ -21,6 +21,10 @@ const userSchema = new Schema({
     default: 'User'
   },
   email: String,
+  image: {
+    type: String,
+    default: 'https://www.startupdelta.org/wp-content/uploads/2018/04/No-profile-LinkedIn.jpg'
+  },
   age: Number,
   city: String,
   ocupation: String,
