@@ -118,11 +118,28 @@ router.post('/changePhoto', parser.single('image'), isNotLoggedIn, async (req, r
     }
 })
 
-router.get('/notifications', isNotLoggedIn, (req, res, next) => {
+router.get('/notifications', isNotLoggedIn, async (req, res, next) => {
+    try{
+    const id = req.session.currentUser._id
     if (req.session.currentUser.type === 'User') {
-        return res.render('users/notifications')
+        const userNotes = await User.findById(id).populate({ 
+            path: 'Notes',
+            populate: {
+                path: 'idDog',
+                model: 'Dog',
+                populate: {
+                    path: 'shelter',
+                    model: 'Shelter'
+                } 
+            } 
+        })
+        console.log(userNotes.Notes)
+        return res.render('users/notifications', {userNotes})
     } else if (req.session.currentUser.type === 'Shelter') {
         return res.render('shelters/notifications')
+    }
+    }catch(err){
+        next(err)
     }
 })
 

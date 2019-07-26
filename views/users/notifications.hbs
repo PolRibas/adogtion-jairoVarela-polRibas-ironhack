@@ -1,4 +1,8 @@
 
-
+{{#each userNotes.Notes}}
+    <img src="{{idDog.image}}" alt="" width="100px">
+    <p>{{message}}</p>
+    <p>{{idDog.shelter.[0].username}}</p>
+{{/each}}
 
 {{>navUser}}

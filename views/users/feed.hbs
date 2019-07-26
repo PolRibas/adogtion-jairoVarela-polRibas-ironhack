@@ -1,8 +1,18 @@
-<h1>You are in</h1>
-<h2>You are a User</h2>
 
-<section class="dogs-list">
-    
-</section>
+<nav><ul><li>age</li><li>size</li></ul></nav>
+{{#each dogs}}
+    <img src="{{image}}" alt="{{name}}" width="100px">
+    <h2>{{name}}</h2>
+     <p>Shelter: {{shelter.[0].name}}</p>
+    {{#if breed}}
+    <p>breed: {{breed}}</p>
+    {{/if}}
+     <p>age: {{age}}</p>
+    <form action='/api/likeDog' method="POST">
+        <input name="shelter" value="{{shelter.[0]._id}}" style="display:none;">
+        <input name="dog" value="{{_id}}" style="display:none;">
+        <button type="submit">Favoritos</button>
+    </form>
+{{/each}}
 
 {{>navUser}}
