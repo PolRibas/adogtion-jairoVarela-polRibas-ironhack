@@ -1,4 +1,24 @@
-
+<form action="/app/dogs/create" method="POST" enctype="multipart/form-data">
+        <label>Dog Name:
+            <input type="text" name="name" id="name" placeholder="Dog Name" required>
+        </label>
+        <label>Breed:
+            <input type="text" name="breed" id="breed" placeholder="breed" required>
+        </label>
+        <label>size:
+            <select type="text" name="size" id="size">
+                <option name="Small" value="Small">Small</option>
+                <option name="Medium" value="Medium">Medium</option>
+                <option name="Large" value="Large">Large</option>
+                <option name="Extra Large" value="Extra Large">Extra Large</option>
+            </select>
+        </label>
+        <label>age:
+            <input type="text" name="age" id="age" placeholder="age">
+        </label>
+        <input type="file" name="image" id="image" required/>
+        <button type="submit">Update</button>
+    </form> 
 
 
 {{>navShelter}}

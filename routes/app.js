@@ -25,7 +25,11 @@ router.get('/dogs/create', isNotLoggedIn, (req, res, next) => {
     }
 })
 
-router.post('/dogs/create', isNotLoggedIn, (req, res, next) => {
+router.post('/dogs/create', parser.single('image'), isNotLoggedIn, async (req, res, next) => {
+    const id = req.session.currentUser._id
+    const {name, breed, size, website, address} = req.body
+    const picture = req.file.secure_url
+    await Dogs.create({name, breed, size, website, address, image: picture, shelter: id})
     return res.redirect('/')
 })
 
@@ -101,12 +105,16 @@ router.post('/changePhoto', parser.single('image'), isNotLoggedIn, async (req, r
         next(err)
     }
     } else if (req.session.currentUser.type === 'Shelter') {
+        try{
         const image = req.file.secure_url
         const {_id} = req.session.currentUser;
         await Shelter.findByIdAndUpdate(_id, {image:image}) 
         shelter = await Shelter.findById(_id)
         req.session.currentUser = shelter
         return res.redirect('/app/profile')
+    }catch(err){
+        next(err)
+    }
     }
 })
 

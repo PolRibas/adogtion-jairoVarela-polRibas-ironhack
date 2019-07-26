@@ -13,20 +13,13 @@ const dogSchema = new Schema({
     type: String,
     default: 'No Breed'
   },
-  breed: {
-    type: String,
-    default: 'No Breed'
-  },
-  breed: {
-    type: String,
-    default: 'No Breed'
-  },
   size: [{
     type: String,
     enum: ['Small','Medium','Large','Extra Large']
   }],
   age: {
-    type: String
+    type: String,
+    default: 'Unknown'
   },
   image: {
     type: String,
@@ -38,7 +31,8 @@ const dogSchema = new Schema({
   }],
   status: {
     type: String,
-    enum: ['Liked', 'Matched', 'Accepted', 'Adopted']
+    enum: ['None','Liked', 'Matched', 'Accepted', 'Adopted'],
+    default: 'None'
   }
 }, {
   timestamps: true
