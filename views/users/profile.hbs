@@ -1,0 +1,17 @@
+
+<section>
+    <form action="/auth/signup" method="POST">
+        <label>Username:
+            <input type="text" name="username" id="username" disabled value="{{username}}" >
+        </label>
+        <label>First Name:
+            <input type="text" name="name" id="name" placeholder="first Name">
+        </label>
+        <label>Surname:
+            <input type="text" name="surName" id="surName" placeholder="surName">
+        </label>
+        <button type="submit">Signup!!</button>
+    </form>
+<h1>{{username}}</h1>
+
+{{>navUser}}
