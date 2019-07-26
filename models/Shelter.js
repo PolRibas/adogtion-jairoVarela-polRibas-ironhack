@@ -11,8 +11,7 @@ const shelterSchema = new Schema({
     unique: true
   },
   name: {
-    type: String,
-    required: true
+    type: String
   },
   password: {
     type: String,
@@ -27,8 +26,12 @@ const shelterSchema = new Schema({
   website: {
     type: String
   },
-  adress: {
+  address: {
     type: String
+  },
+  type:{
+    type: String,
+    default: 'Shelter'
   },
   dogs: [{
     type: ObjectId,

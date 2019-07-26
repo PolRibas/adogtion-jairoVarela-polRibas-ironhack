@@ -2,17 +2,22 @@ const express = require('express')
 const router = express.Router()
 
 const User = require('../models/User.js')
+const Shelter = require('../models/Shelter.js')
+const Dogs = require('../models/Dog.js')
+const Notes = require('../models/Notes.js')
 
 /* GET home page. */
 router.get('/', async (req, res, next) => {
-  if (req.session.currentUser) {
-    //es un Usuario
-    return res.render('homeForUser')
-    //es un Shelter
-    // return res.render('homeForShelter')
-  }
+    console.log(req.session.currentUser)
+  if(req.session.currentUser){
+    if (req.session.currentUser.type === 'User') {
+        //datos de perros
+        return res.render('users/feed')
+    } else if (req.session.currentUser.type === 'Shelter') {
+        //datos de perros
+        return res.render('shelters/feed')
+  }}
   res.render('index')
-  // Pagina inicial con login + splash inicial de entrar + botton signup: auth/signup
 })
 
 module.exports = router

@@ -1,21 +1,6 @@
 <h1></h1>
-{{>logo}}
 <section>
-    <h2>Shelter</h2>
-    <form action="/auth/loginShelter" method="POST" class="login">
-        <label>Username:
-            <input type="text" name="username" id="username" required placeholder="Username">
-        </label>
-        <label>Password:
-            <input type="password" name="password" id="password" required placeholder="Password">
-        </label>
-        <button type="submit">Login</button>
-        <a href="/auth/signup">Signup</a> or <a href="/auth/login">Login</a>
-    </form>
-</section>
-<section>
-    <h2>User</h2>
-    <form action="/auth/loginUser" method="POST" class="login">
+    <form action="/auth/login" method="POST" class="login">
         <label>Username:
             <input type="text" name="username" id="username" required placeholder="Username">
         </label>

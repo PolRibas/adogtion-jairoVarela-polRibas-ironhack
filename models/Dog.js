@@ -31,8 +31,12 @@ const dogSchema = new Schema({
   image: {
     type: String
   },
+  shelter: [{
+    type: ObjectId,
+    ref: 'Shelter'
+  }],
   status: {
-    type: Array,
+    type: String,
     enum: ['Liked', 'Matched', 'Accepted', 'Adopted']
   }
 }, {

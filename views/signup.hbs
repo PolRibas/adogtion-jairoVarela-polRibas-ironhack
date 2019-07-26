@@ -1,5 +1,21 @@
+<h1>user</h1>
 <section>
-    <form action="/auth/signup" method="POST">
+    <form action="/auth/signupUser" method="POST">
+        <label>Username:
+            <input type="text" name="username" id="username" required placeholder="Username">
+        </label>
+        <label>Password:
+            <input type="password" name="password" id="password" required placeholder="Password">
+        </label>
+        <label>Password comprobation:
+            <input type="password" name="passwordtwo" id="passwordtwo" required placeholder="Password">
+        </label>
+        <button type="submit">Signup</button>
+    </form>
+</section>
+<h1>shelter</h1>
+<section>
+    <form action="/auth/signupShelter" method="POST">
         <label>Username:
             <input type="text" name="username" id="username" required placeholder="Username">
         </label>
