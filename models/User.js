@@ -29,7 +29,7 @@ const userSchema = new Schema({
   city: String,
   ocupation: String,
   civilStatus: String,
-  Notes: [{
+  notes: [{
     type: ObjectId,
     ref: 'Notes'
   }]

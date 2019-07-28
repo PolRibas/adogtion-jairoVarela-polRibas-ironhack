@@ -1,8 +1,22 @@
-
-{{#each userNotes.Notes}}
+<section>
+{{#each userNotes.notes}}
+    <section>
     <img src="{{idDog.image}}" alt="" width="100px">
-    <p>{{message}}</p>
-    <p>{{idDog.shelter.[0].username}}</p>
+    <h3>Shelter: {{idDog.shelter.[0].username}}</h3>
+    {{#each message}}
+        <p>{{this}}</p>
+    {{/each}}
+    {{#if message.[1]}}
+        {{#if message.[2]}}
+        {{else}}
+            <form action="/api/message/{{_id}}" method="POST">
+                <input type="text" name="information" placeholder="write your information" />
+                <button type="submit">Send</button>
+            </form>
+        {{/if}}
+    {{/if}}
+    </section>
 {{/each}}
+</section>
 
 {{>navUser}}
