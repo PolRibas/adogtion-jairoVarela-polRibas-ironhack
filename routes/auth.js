@@ -22,7 +22,7 @@ router.post('/signupUser', isLoggedIn, isFormFilled, async (req, res, next) => {
     req.flash('passwordBad', 'This is not the password for this user')
     return res.redirect('/auth/signup')
   }
-  try {req.session.currentUser
+  try {
     const { username, password } = req.body
     const user = await User.findOne({ username })
     const shelter = await Shelter.findOne({ username })

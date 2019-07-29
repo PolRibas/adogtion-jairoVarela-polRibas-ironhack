@@ -5,25 +5,25 @@
         <img src="{{idUser.image}}" alt="" width="50px">
         <p>{{idUser.name}} {{idUser.surName}}</p>
         {{#each message}}
-            <p>{{this}}</p>
+            <p class="chat">{{this}}</p>
          {{/each}}
          {{#if message.[1]}}
                 {{#if message.[2]}}
                     {{#if message.[3]}}
                     {{else}}
-                        <form action="/api/Dogmessage/{{_id}}" method="POST">
-                            <input type="text" name="information" placeholder="write your information" />
-                            <button type="submit">Send</button>
+                        <form class="chat-form" action="/api/Dogmessage/{{_id}}">
+                            <input id="information" type="text" name="information" placeholder="write your information" />
+                            <button class="submit" type="submit">Send</button>
                         </form>
                     {{/if}}
                 {{/if}}
             {{else}}
-            <form action="/api/{{_id}}" method="POST">
-                <button type="submit">OK</button>
+            <form class="ok-form" action="/api/{{_id}}">
+                <button type="submit">Request Information</button>
             </form>
          {{/if}}
         <img src="{{idDog.image}}" alt="" width="100px">
     </section>
 {{/each}}
 </section>
-
+<script src="/javascripts/shelters/notes.js"></script>
