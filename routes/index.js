@@ -15,15 +15,15 @@ try{
     if (user.type === 'User') {
         const id = user._id;
         const userWithDogs = await User.findById(id).populate('likeDogs')
-        console.log(userWithDogs)
-        let likedDogs = [];
         let notLikedDogs = []; 
         for (dog of dogs){
-            if(userWithDogs.likeDogs._id === dog._id){
-                await likedDogs.push(dog)
-                console.log(dog)
-            }else{
-                await notLikedDogs.push(dog)
+            let iHaveit = false;
+            userWithDogs.likeDogs.forEach((likeDog) => {       
+                if (likeDog._id.equals(dog._id)){
+                    iHaveit = true
+                }})
+            if(!iHaveit){
+                notLikedDogs.push(dog)
             }
         }
         notLikedDogs.sort((a, b) => { 
