@@ -1,11 +1,30 @@
-<nav class="uk-navbar-container" uk-navbar>
+ <nav class="uk-navbar-container" uk-navbar="dropbar: true; dropbar-mode: push">    
     <div class="uk-navbar-left">
-
         <ul class="uk-navbar-nav">
             <li class="uk-active"><a href="/">Feed</a></li>
-            <li><a href="../../app/notifications">Notification</a></li>
-            <li><a href="../../app/settings">Settings</a></li>
+             <li><a href="../../app/notifications">Notification</a></li>
         </ul>
+        <div class="uk-navbar-right">
+        <ul class="uk-navbar-nav">
+            <li>
+                <a href="#">Settings</a>
+                <div class="uk-navbar-dropdown">
+                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                        <li><a href="/app/profile">Edit Profile</a></li>
+                        <li> <input class="container_toggle" type="checkbox" id="switch" name="mode">
+                            <label class="darkmode-label" for="switch">Toggle</label> </li>
+                        <li class="uk-nav-divider"></li>
+                        <li class="uk-active">
+                            <form action="/auth/logout" method="POST">
+                            <button class="uk-button" type="submit">Logout</button>
+                            </form>
+                        </li>
+                       </ul>
+                </div>
+            </li>
+            </ul>
+            </div>
 
     </div>
     </nav>
+<script src="../javascripts/darkmode.js"></script>
