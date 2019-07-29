@@ -1,0 +1,26 @@
+<!-- This is the Sign Up Modal -->
+<button class="uk-button uk-button-default" uk-toggle="target: #signup" type="button">Sign Up</button>
+<div id="signup" uk-modal>
+    <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body">
+        <h2 class="uk-modal-title">Sign Up</h2>
+        
+        <form class="uk-form-stacked" action="/auth/signupUser" method="POST">
+            <div class="uk-margin">
+                <label class="uk-form-label" for="form-stacked-text">Username:</label>
+                <input class="uk-input" type="text" name="username" id="username" required placeholder="Username"
+                    autofocus>
+            </div>
+            <div class="uk-margin">
+                <label class="uk-form-label" for="form-stacked-text">Password:</label>
+                <input class="uk-input" type="password" name="password" id="password" required placeholder="Password">
+            </div>
+            <div class="uk-margin">
+                <label class="uk-form-label" for="form-stacked-text">Repeat password:</label>
+                <input class="uk-input" type="password" name="passwordtwo" id="passwordtwo" required
+                    placeholder="Repeat your password">
+            </div>
+            <button class="uk-button uk-button-default" type="submit">Signup</button>
+        </form>
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+    </div>
+</div>
