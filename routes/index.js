@@ -11,8 +11,20 @@ router.get('/', async (req, res, next) => {
 try{
   if(req.session.currentUser){
       const dogs = await Dogs.find().populate('shelter')
-      const user = req.session.currentUser;
+      const user = await req.session.currentUser /*populate('likeDogs')*/;
     if (user.type === 'User') {
+        // let likedDogs = [];
+        // let notLikedDogs = []; 
+        // for (dog in dogs){
+        //     if(await user.likeDogs.find(dog)){
+        //         await likedDogs.push(dog)
+        //     }else{
+        //         await notLikedDogs.push(dog)
+        //     }
+        // }
+        // const data = {
+        //     likedDogs,notLikedDogs
+        // } 
         return res.render('users/feed', {dogs})
     } else if (user.type === 'Shelter') {
         let shelterdog = [];

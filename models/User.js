@@ -29,6 +29,10 @@ const userSchema = new Schema({
   city: String,
   ocupation: String,
   civilStatus: String,
+  likeDogs: [{
+    type: ObjectId,
+    ref: 'Dog'
+  }],
   notes: [{
     type: ObjectId,
     ref: 'Notes'

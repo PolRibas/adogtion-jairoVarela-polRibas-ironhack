@@ -10,12 +10,18 @@
     {{#if message.[1]}}
         {{#if message.[2]}}
         {{else}}
-            <form action="/api/message/{{_id}}" method="POST">
-                <input type="text" name="information" placeholder="write your information" />
-                <button type="submit">Send</button>
+            <form class="chat-form" action="/api/message/{{_id}}">
+                <input id="information" type="text" name="information" placeholder="write your information" />
+                <button class="submit" type="submit">Send</button>
             </form>
         {{/if}}
     {{/if}}
     </section>
 {{/each}}
 </section>
+<<<<<<< HEAD
+=======
+
+{{>navUser}}
+<script src="/javascripts/users/notes.js"></script>
+>>>>>>> 9f2418a3690872189419cff6a3ab31efb80a2001
