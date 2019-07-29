@@ -1,21 +1,13 @@
 {{>navUser}}
 <h1 class="uk-heading">My Dogs</h1>
 <section class="dog-list">
-<article>
-    <h2 class="uk-heading-divider">{{name}}</h2>
-    <img class="dog-img" src="{{image}}" alt="{{name}}">
-<article>
-    <h2 class="uk-heading-divider">{{name}}</h2>
-    <img class="dog-img" src="{{image}}" alt="{{name}}">
-
 {{#each notLikedDogs}}
+<article>
     <img src="{{image}}" alt="{{name}}" width="100px">
     <h2>{{name}}</h2>
-
     {{#if breed}}
     <p>Breed: {{breed}}</p>
     {{/if}}
-
      <p>Age: {{age}}</p>
     <form action='/api/likeDog' method="POST">
 
