@@ -12,9 +12,9 @@ try{
   if(req.session.currentUser){
       const dogs = await Dogs.find().populate('shelter')
       const user = req.session.currentUser;
-    if (req.session.currentUser.type === 'User') {
+    if (user.type === 'User') {
         return res.render('users/feed', {dogs})
-    } else if (req.session.currentUser.type === 'Shelter') {
+    } else if (user.type === 'Shelter') {
         let shelterdog = [];
         for (dog in dogs){
             if(dogs[dog].shelter[0].username === user.username){
