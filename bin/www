@@ -5,7 +5,8 @@
  */
 
 var app = require('../app');
-/* var debug = require('debug')('my-first-sesion-cokie:server'); */
+var debug = require('debug')('adogtion:server');
+/* var debug = require('debug')('m2-project:server'); */
 var http = require('http');
 
 /**
