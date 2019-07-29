@@ -18,7 +18,7 @@ router.post('/likeDog', async (req, res, next) => {
     await Dogs.findByIdAndUpdate(dogId,{ status: 'Liked' })
     await User.findByIdAndUpdate(id,{$push: {notes: note[0]._id}})
     await User.findByIdAndUpdate(id, {$push: {likeDogs: dogId}})
-    res.redirect('/')
+    res.json()
     }catch(err){
         next(err)
     }

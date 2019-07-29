@@ -7,6 +7,7 @@ const main = () => {
         const action = document.querySelectorAll('.chat-form');
         console.log(action)
         action.forEach( (form, index) => {
+            console.log(index)
             form.addEventListener('submit', async (event)=>{
             event.preventDefault()
             console.log(index)
@@ -17,7 +18,7 @@ const main = () => {
             console.log(information)
             console.log(event.target.action)
             console.log(index)
-            //const response = await axios.post(`${event.target.action}`, information)
+            const response = await axios.post(`${event.target.action}`, information)
             dogCard[index].remove()
         }
         )}
