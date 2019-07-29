@@ -6,6 +6,10 @@
     "start": "node ./bin/www",
     "start-dev": "nodemon -e js, hbs, json, ./bin/www "
   },
+  "engines": {
+    "node": "v12.6.0",
+    "npm": "6.10.2"
+  },
   "dependencies": {
     "bcrypt": "^3.0.6",
     "cloudinary": "^1.14.0",

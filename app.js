@@ -9,6 +9,7 @@ const hbs = require('hbs')
 const flash = require('connect-flash')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
+require('dotenv').config();
 
 const indexRouter = require('./routes/index')
 const usersRouter = require('./routes/app')
@@ -17,7 +18,7 @@ const apiRouter = require('./routes/api')
 
 const app = express()
 
-mongoose.connect('mongodb://localhost/adogtion', {
+mongoose.connect(process.env.MONGODB_URI, {
   keepAlive: true,
   useNewUrlParser: true,
   reconnectTries: Number.MAX_VALUE
@@ -28,7 +29,7 @@ app.use(session({
     mongooseConnection: mongoose.connection,
     ttl: 24 * 60 * 60
   }),
-  secret: '-b&$ll..´´//%99$jou--jou/Grizzly$$@',
+  secret: process.env.API_SECRET,
   resave: true,
   saveUninitialized: true,
   cookie: {
