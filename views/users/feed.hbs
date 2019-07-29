@@ -1,14 +1,16 @@
 {{>navUser}}
-{{#each dogs}}
+{{#each notLikedDogs}}
     <img src="{{image}}" alt="{{name}}" width="100px">
     <h2>{{name}}</h2>
     {{#if breed}}
     <p>breed: {{breed}}</p>
     {{/if}}
      <p>age: {{age}}</p>
-    <form action='/api/likeDog' method="POST">
+    <form class="chat-form" action='/api/likeDog'>
         <input name="shelter" value="{{shelter.[0]._id}}" style="display:none;">
         <input name="dog" value="{{_id}}" style="display:none;">
         <button type="submit">Favoritos</button>
     </form>
 {{/each}}
+
+<script src="/javascripts/users/like.js"></script>
