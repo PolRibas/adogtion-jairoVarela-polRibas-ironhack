@@ -1,8 +1,10 @@
 {{>navUser}}
+<h1 class="uk-heading">My Dogs</h1>
+<section class="dog-list">
 {{#each dogs}}
-    <img src="{{image}}" alt="{{name}}" width="100px">
-    <h2>{{name}}</h2>
-     <p>Shelter: {{shelter.[0].name}}</p>
+<article>
+    <h2 class="uk-heading-divider">{{name}}</h2>
+    <img class="dog-img" src="{{image}}" alt="{{name}}">
     {{#if breed}}
     <p>breed: {{breed}}</p>
     {{/if}}
@@ -12,4 +14,6 @@
         <input name="dog" value="{{_id}}" style="display:none;">
         <button type="submit">Favoritos</button>
     </form>
+</article>
 {{/each}}
+</section>
