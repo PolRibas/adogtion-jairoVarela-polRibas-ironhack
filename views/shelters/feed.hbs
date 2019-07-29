@@ -1,15 +1,18 @@
+{{>navShelter}}
+<h1 class="uk-heading">My Dogs</h1>
+<section class="dog-list">
 {{#each shelterdog}}
-    <img src="{{image}}" alt="{{name}}" width="100px">
-    <h2>{{name}}</h2>
+<article>
+    <h2 class="uk-heading-divider">{{name}}</h2>
+    <img class="dog-img" src="{{image}}" alt="{{name}}">
     {{#if breed}}
     <p>breed: {{breed}}</p>
     {{/if}}
      <p>age: {{age}}</p>
+</article>
 {{/each}}
-
+</section>
 {{#if nonDogs}}
-    <h2>You don't have dogs</h2>
-    <a href="../../app/dogs/create">add a dog</a>
+    <h2>You don't have dogs ... <a href="../../app/dogs/create">Add your first one!</a></h2>
 {{/if}}
 
-{{>navShelter}}

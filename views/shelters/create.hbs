@@ -1,3 +1,4 @@
+{{>navShelter}}
 <form action="/app/dogs/create" method="POST" enctype="multipart/form-data">
         <label>Dog Name:
             <input type="text" name="name" id="name" placeholder="Dog Name" required>
@@ -17,8 +18,6 @@
             <input type="text" name="age" id="age" placeholder="age">
         </label>
         <input type="file" name="image" id="image" required/>
-        <button type="submit">Update</button>
+        <button type="submit">Create</button>
     </form> 
 
-
-{{>navShelter}}
