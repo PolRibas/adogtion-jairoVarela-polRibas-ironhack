@@ -1,14 +1,11 @@
 {{>navUser}}
 <h1 class="uk-heading">My Dogs</h1>
 <section class="dog-list">
-{{#each dogs}}
-<article>
-    <h2 class="uk-heading-divider">{{name}}</h2>
-    <img class="dog-img" src="{{image}}" alt="{{name}}">
 
 {{#each notLikedDogs}}
-    <img src="{{image}}" alt="{{name}}" width="100px">
-    <h2>{{name}}</h2>
+<article>
+    <h2 class="uk-heading-divider">{{name}}</h2>
+    <img src="{{image}}" alt="{{name}}">
 
     {{#if breed}}
     <p>Breed: {{breed}}</p>
@@ -25,8 +22,6 @@
         <button type="submit">Favorites</button>
     </form>
 </article>
-{{/each}}
-
 {{/each}}
 
 <script src="/javascripts/users/like.js"></script>
