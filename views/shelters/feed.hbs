@@ -1,7 +1,4 @@
-<h1>You are in</h1>
-<h2>You are a Shelter</h2>
-
-{{#each dogs}}
+{{#each shelterdog}}
     <img src="{{image}}" alt="{{name}}" width="100px">
     <h2>{{name}}</h2>
     {{#if breed}}
@@ -9,5 +6,10 @@
     {{/if}}
      <p>age: {{age}}</p>
 {{/each}}
+
+{{#if nonDogs}}
+    <h2>You don't have dogs</h2>
+    <a href="../../app/dogs/create">add a dog</a>
+{{/if}}
 
 {{>navShelter}}

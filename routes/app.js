@@ -27,9 +27,9 @@ router.get('/dogs/create', isNotLoggedIn, (req, res, next) => {
 
 router.post('/dogs/create', parser.single('image'), isNotLoggedIn, async (req, res, next) => {
     const id = req.session.currentUser._id
-    const {name, breed, size, website, address} = req.body
+    const {name, breed, size, age} = req.body
     const picture = req.file.secure_url
-    await Dogs.create({name, breed, size, website, address, image: picture, shelter: id})
+    await Dogs.create({name, breed, size, age, image: picture, shelter: id})
     return res.redirect('/')
 })
 
@@ -118,11 +118,40 @@ router.post('/changePhoto', parser.single('image'), isNotLoggedIn, async (req, r
     }
 })
 
-router.get('/notifications', isNotLoggedIn, (req, res, next) => {
+router.get('/notifications', isNotLoggedIn, async (req, res, next) => {
+    try{
+    const id = req.session.currentUser._id
     if (req.session.currentUser.type === 'User') {
-        return res.render('users/notifications')
+        const userNotes = await User.findById(id).populate({ 
+            path: 'notes',
+            populate: {
+                path: 'idDog',
+                model: 'Dog',
+                populate: {
+                    path: 'shelter',
+                    model: 'Shelter'
+                } 
+            } 
+        })
+        return res.render('users/notifications', {userNotes})
     } else if (req.session.currentUser.type === 'Shelter') {
-        return res.render('shelters/notifications')
+        const shelterNotes = await Shelter.findById(id).populate({ 
+            path: 'notes',
+            populate: {
+                path: 'idDog',
+                model: 'Dog'
+            }
+        }).populate({ 
+            path: 'notes',
+            populate: {
+                path: 'idUser',
+                model: 'User'
+            }
+        })
+        return res.render('shelters/notifications', {shelterNotes})
+    }
+    }catch(err){
+        next(err)
     }
 })
 

@@ -5,10 +5,14 @@ const Schema = mongoose.Schema
 const ObjectId = Schema.Types.ObjectId
 
 const notesSchema = new Schema({
-  message: String,
+  message: Array,
   idDog: {
       type: ObjectId,
-      ref: 'User'
+      ref: 'Dog'
+    },
+  idUser: {
+    type: ObjectId,
+    ref: 'User'
     }
 })
 
