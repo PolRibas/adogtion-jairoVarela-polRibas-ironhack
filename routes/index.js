@@ -11,21 +11,29 @@ router.get('/', async (req, res, next) => {
 try{
   if(req.session.currentUser){
       const dogs = await Dogs.find().populate('shelter')
-      const user = await req.session.currentUser /*populate('likeDogs')*/;
+      const user = await req.session.currentUser;
     if (user.type === 'User') {
-        // let likedDogs = [];
-        // let notLikedDogs = []; 
-        // for (dog in dogs){
-        //     if(await user.likeDogs.find(dog)){
-        //         await likedDogs.push(dog)
-        //     }else{
-        //         await notLikedDogs.push(dog)
-        //     }
-        // }
-        // const data = {
-        //     likedDogs,notLikedDogs
-        // } 
-        return res.render('users/feed', {dogs})
+        const id = user._id;
+        const userWithDogs = await User.findById(id).populate('likeDogs')
+        console.log(userWithDogs)
+        let likedDogs = [];
+        let notLikedDogs = []; 
+        for (dog of dogs){
+            if(userWithDogs.likeDogs._id === dog._id){
+                await likedDogs.push(dog)
+                console.log(dog)
+            }else{
+                await notLikedDogs.push(dog)
+            }
+        }
+        notLikedDogs.sort((a, b) => { 
+             if (a > b){
+               return -1;}
+             if (a < b){
+               return 1;}
+             return 0;
+         }) 
+        return res.render('users/feed', {notLikedDogs})
     } else if (user.type === 'Shelter') {
         let shelterdog = [];
         for (dog in dogs){
@@ -37,6 +45,13 @@ try{
             const nonDogs = {};
             return res.render('shelters/feed', {nonDogs})
         }
+        shelterdog.sort((a, b) => { 
+            if (a > b){
+              return -1;}
+            if (a < b){
+              return 1;}
+            return 0;
+        }) 
         return res.render('shelters/feed', {shelterdog})
     }
   }
