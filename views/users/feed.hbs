@@ -1,5 +1,6 @@
-
-<nav><ul><li>age</li><li>size</li></ul></nav>
+{{!-- 
+<nav><ul><li>age</li><li>size</li></ul></nav> --}}
+{{>navUser}}
 {{#each dogs}}
     <img src="{{image}}" alt="{{name}}" width="100px">
     <h2>{{name}}</h2>
@@ -14,5 +15,3 @@
         <button type="submit">Favoritos</button>
     </form>
 {{/each}}
-
-{{>navUser}}

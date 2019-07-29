@@ -1,6 +1,9 @@
-<h1></h1>
-<section>
-    <form action="/auth/login" method="POST" class="login">
+<section class="index-container">
+    <center>{{>logo}}</center>
+{{!-- <h3>Don't be alone, be adogted</h3> --}}
+{{>loginform}}
+{{>signupform}}
+    {{!-- <form action="/auth/login" method="POST" class="login">
         <label>Username:
             <input type="text" name="username" id="username" required placeholder="Username">
         </label>
@@ -8,8 +11,10 @@
             <input type="password" name="password" id="password" required placeholder="Password">
         </label>
         <button type="submit">Login</button>
-    </form>
-    <a href="/auth/signup">Signup</a> or <a href="/auth/login">Login</a>
+    </form> --}}
+    
+{{!-- <button class="uk-button uk-button-default uk-margin-small-right" type="button" uk-toggle="target: #offcanvas-login">Login</button>
+<button class="uk-button uk-button-default uk-margin-small-left" type="button" uk-toggle="target: #offcanvas-usage">Sign Up</button> --}}
 </section>
 {{#if messages.length}}
         <ul class="validation">
