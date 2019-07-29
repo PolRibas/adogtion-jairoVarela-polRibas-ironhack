@@ -124,17 +124,26 @@ html.transition *:after {
 
 .dog-list{
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
   flex-flow: column wrap;
 }
-@media (min-width: 900px){
+@media (min-width: 500px){
 .dog-list{
   display: flex;
   align-items: flex-start;
   flex-flow: row wrap;
 }
 }
+@media (max-width: 500px){
+.dog-list article{
+  
+  width: 100%;
+
+}
+}
+
+
 
 .dog-list article{
   margin: 1%;
@@ -142,4 +151,8 @@ html.transition *:after {
 .dog-img{
   max-width: 250px;
   min-width: 250px;
+}
+
+.uk-navbar {
+  min-width: 350px;
 }
