@@ -27,9 +27,9 @@ router.get('/dogs/create', isNotLoggedIn, (req, res, next) => {
 
 router.post('/dogs/create', parser.single('image'), isNotLoggedIn, async (req, res, next) => {
     const id = req.session.currentUser._id
-    const {name, breed, size, age, gender, description} = req.body
+    const {name, breed, size, age, gender, description, weight} = req.body
     const picture = req.file.secure_url
-    await Dogs.create({name, breed, gender, description, size, age, image: picture, shelter: id})
+    await Dogs.create({name, breed, gender, description, size, weight, age, image: picture, shelter: id})
     return res.redirect('/')
 })
 
