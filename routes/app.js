@@ -33,14 +33,52 @@ router.post('/dogs/create', parser.single('image'), isNotLoggedIn, async (req, r
     return res.redirect('/')
 })
 
+router.get('/dogs/:id/update', isNotLoggedIn, async (req, res, next) => {
+    if (req.session.currentUser.type === 'User') {
+        return res.render('/')
+    } else if (req.session.currentUser.type === 'Shelter') {
+        const id = req.params.id;
+        console.log(id)
+        console.log(req.params)
+        const dog = await Dogs.findById(id)
+        return res.render('shelters/editDog', {dog})
+    }
+})
 
-//doing get
-router.post('/dogs/:id/update', isNotLoggedIn, (req, res, next) => {
+router.post('/dogs/:id/update', isNotLoggedIn, async (req, res, next) => {
+    const id = req.params.id;
+    const {name, breed, gender, description, size, weight, age} = req.body;
+    await Dogs.findByIdAndUpdate(id,{name, breed, gender, description, size, weight, age})
     return res.redirect('/')
 })
 
-router.post('/dogs/:id/delete', isNotLoggedIn, (req, res, next) => {
-    return res.redirect('/')
+router.post('/dogs/:id/delete', isNotLoggedIn, async (req, res, next) => {
+    try{
+        const id = req.params.id;
+        const notes = await Notes.find().populate('idDog')
+        for (note of notes){      
+            if (note.idDog.equals(id)){
+                await Notes.deleteOne({_id: note._id})
+            }
+        }
+        await Dogs.deleteOne({_id: id})
+        return res.redirect('/')
+    }catch(err){
+        next(err)
+    }
+})
+
+router.post('/changePhoto/:id', parser.single('image'), isNotLoggedIn, async (req, res, next) => {
+    try{ 
+        console.log('esta bien')
+        const image = req.file.secure_url
+        const id = req.params.id;
+        await Dogs.findByIdAndUpdate(id, {image: image}) 
+        return res.redirect(`/app/dogs/${id}/update`)
+    }catch(err){
+        next(err)
+    }
+    
 })
 
 
@@ -120,7 +158,6 @@ router.post('/profile/delete', isNotLoggedIn, async (req, res, next) => {
 
 router.post('/changePhoto', parser.single('image'), isNotLoggedIn, async (req, res, next) => {
     if (req.session.currentUser.type === 'User') {
-    console.log('u arrive')
     try{
         const image = req.file.secure_url
         const {_id} = req.session.currentUser;
