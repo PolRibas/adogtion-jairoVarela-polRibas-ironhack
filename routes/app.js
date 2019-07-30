@@ -86,7 +86,30 @@ router.post('/profile/update',isNotLoggedIn, async (req, res, next) => {
     }
 })
 
-router.post('/profile/delete', isNotLoggedIn, (req, res, next) => {
+router.post('/profile/delete', isNotLoggedIn, async (req, res, next) => {
+    const id = req.session.currentUser._id
+    const notes = await Notes.find().populate('idDog')
+    if (req.session.currentUser.type === 'User') {
+        for (note of notes){        
+            if (note.UserId.equals(id)){
+                await Notes.deleteOne(note._id)
+            }
+        }
+        await User.deleteOne(id)
+    } else if (req.session.currentUser.type === 'Shelter') {
+        const dogs = Dogs.find();
+        for(dog of dogs){
+            if (dog.shelter.equals(id)){
+                await Dogs.deleteOne(dog._id)
+            }
+        }
+        for (note of notes){
+            if (note.idDog.shelter.equals(id)){
+                await Notes.deleteOne(note._id)
+            }
+        }
+        await Shelter.deleteOne(id)
+    }
     return res.redirect('/')
 })
 
@@ -158,12 +181,5 @@ router.get('/notifications', isNotLoggedIn, async (req, res, next) => {
 router.get('/', isNotLoggedIn, (req, res, next) => {
     return res.redirect('/')
 })
-
-//codigo para reciclar, no usar
-//router.post('/subirArchivo', parser.single('photo'), async (req, res, next) => {
-//     const imageUrl = req.file.secure_url
-//     await Imagen.create({ image: imageUrl })
-//     res.redirect('/subirArchivo')
-// })
 
 module.exports = router
