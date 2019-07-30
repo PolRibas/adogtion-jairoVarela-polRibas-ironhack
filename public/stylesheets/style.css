@@ -123,6 +123,21 @@ html.transition *:after {
   align-content: center;
 }
 
+.delete-div{
+  display: flex;
+  justify-content: center;
+}
+.profile-img{
+  max-width: 300px;
+}
+
+.profile-page{
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+
+}
+
 .dog-list{
   display: flex;
   align-items: center;
@@ -162,4 +177,13 @@ main{
 
 .uk-button{
   margin: 1%;
+}
+
+.notifications{
+  display: flex;
+}
+
+.notificacions-img{
+  width: 100px;
+  border-radius: 50%;
 }
