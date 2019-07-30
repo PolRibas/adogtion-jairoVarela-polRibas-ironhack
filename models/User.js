@@ -28,7 +28,10 @@ const userSchema = new Schema({
   age: Number,
   city: String,
   ocupation: String,
-  civilStatus: String,
+  civilStatus: {
+    type: String,
+    enum: ['Married', 'Single', `It's complicated`, 'Divorced']
+},
   likeDogs: [{
     type: ObjectId,
     ref: 'Dog'

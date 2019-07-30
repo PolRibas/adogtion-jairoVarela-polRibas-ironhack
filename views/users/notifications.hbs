@@ -2,8 +2,11 @@
 <section>
 {{#each userNotes.notes}}
 <article>
+    <h3>Shelter: {{idDog.shelter.username}}</h3>
+    {{#if message.[3]}}
+    {{!-- more info --}}
+    {{/if}}
     <img class="dog-img" src="{{idDog.image}}" alt="">
-    <h3>Shelter: {{idDog.shelter.[0].username}}</h3>
     {{#each message}}
         <p>{{this}}</p>
     {{/each}}
