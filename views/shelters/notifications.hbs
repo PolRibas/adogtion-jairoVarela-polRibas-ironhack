@@ -4,6 +4,10 @@
     <section>
         <img src="{{idUser.image}}" alt="" width="50px">
         <p>{{idUser.name}} {{idUser.surName}}</p>
+        {{#if message.[3]}}
+        {{!-- email
+        telefono --}}
+        {{/if}}
         {{#each message}}
             <p class="chat">{{this}}</p>
          {{/each}}
