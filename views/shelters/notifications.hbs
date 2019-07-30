@@ -1,5 +1,5 @@
 {{>navShelter}}
-<section>
+{{#if shelterNotes.notes}}
 {{#each shelterNotes.notes}}
     <section>
         <img src="{{idUser.image}}" alt="" width="50px">
@@ -29,5 +29,7 @@
         <img src="{{idDog.image}}" alt="" width="100px">
     </section>
 {{/each}}
-</section>
+{{else}}
+<h2>You don't have any notifications yet</h2>
+{{/if}}
 <script src="/javascripts/shelters/notes.js"></script>
