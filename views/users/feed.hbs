@@ -1,25 +1,81 @@
 {{>navUser}}
 <h1 class="uk-heading">Dogs</h1>
 <section class="dog-list">
-
+{{#if notLikedDogs}}
 {{#each notLikedDogs}}
-<article class="dog-article">
-    <h2 class="uk-heading-divider">{{name}}</h2>
-    <img src="{{image}}" alt="{{name}}">
-
-    {{#if breed}}
-    <p>Breed: {{breed}}</p>
-    {{/if}}
-
-     <p>Age: {{age}}</p>
-    <form class='chat-form' action='/api/likeDog'>
-
-        <input name="shelter" value="{{shelter._id}}" style="display:none;">
-        <input name="dog" value="{{_id}}" style="display:none;">
-        <button type="submit">Favorites</button>
-    </form>
-</article>
+<div class="wrapper">
+  <div class="container">
+    <div class="top" style="background-image: url({{image}})"></div>
+    <div class="bottom">
+      <div class="left">
+        <div class="details">
+          <h1>{{name}}</h1>
+          <p>Short description</p>
+        </div>
+        <div class="buy"><i class="material-icons chat-form">favorite</i></div>
+      </div>
+      <div class="right">
+        <div class="done"><i class="material-icons">done</i></div>
+        <div class="details">
+          <p>You liked {{name}}!</p>
+        </div>
+        <div class="remove"><i class="material-icons">clear</i></div>
+      </div>
+    </div>
+  </div>
+  <div class="inside">
+    <div class="icon"><i class="material-icons">info_outline</i></div>
+    <div class="contents">
+      <table>
+        <tr>
+          <th>Age</th>
+          <th>Breed</th>
+        </tr>
+        <tr>
+          <td>{{breed}}</td>
+          <td>{{age}}</td>
+        </tr>
+        <tr>
+          <th>Weight</th>
+          <th>Size</th>
+        </tr>
+        <tr>
+          <td>200mm</td>
+          <td>200mm</td>
+        </tr>
+        <tr>
+          <th>Something</th>
+          <th>Something</th>
+        </tr>
+        <tr>
+          <td>200mm</td>
+          <td>200mm</td>
+        </tr>
+        <tr>
+          <th>Something</th>
+          <th>Something</th>
+        </tr>
+        <tr>
+          <td>200mm</td>
+          <td>200mm</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
 {{/each}}
-
+{{else}}
+    <h3>There aren't any dogs published at the moment...</h3>
+{{/if}}
+<script src="/javascripts/uikit-icons.min.js"></script>
 <script src="/javascripts/users/like.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script>
+    $('.buy').click(function(){
+  $('.bottom').addClass("clicked");
+});
 
+$('.remove').click(function(){
+  $('.bottom').removeClass("clicked");
+});
+</script>
