@@ -20,7 +20,7 @@ router.get('/signup', isLoggedIn, (req, res, next) => {
 router.post('/signupUser', isLoggedIn, isFormFilled, async (req, res, next) => {
   if (req.body.password !== req.body.passwordtwo) {
     req.flash('passwordBad', 'This is not the password for this user')
-    return res.redirect('/auth/signup')
+    return res.redirect('/')
   }
   try {
     const { username, password } = req.body
@@ -28,7 +28,7 @@ router.post('/signupUser', isLoggedIn, isFormFilled, async (req, res, next) => {
     const shelter = await Shelter.findOne({ username })
     if (user || shelter) {
       req.flash('errorUserFind', 'This username is already registred')
-      return res.redirect('/auth/signup')
+      return res.redirect('/')
     }
     const salt = bcrypt.genSaltSync(saltRounds)
     const hashedPassword = bcrypt.hashSync(password, salt)
@@ -43,7 +43,7 @@ router.post('/signupUser', isLoggedIn, isFormFilled, async (req, res, next) => {
 router.post('/signupShelter', isLoggedIn, isFormFilled, async (req, res, next) => {
     if (req.body.password !== req.body.passwordtwo) {
       req.flash('passwordBad', 'This is not the password for this user')
-      return res.redirect('/auth/signup')
+      return res.redirect('/')
     }
     try {
       const { username, password } = req.body
@@ -51,7 +51,7 @@ router.post('/signupShelter', isLoggedIn, isFormFilled, async (req, res, next) =
       const shelter = await Shelter.findOne({ username })
       if (user || shelter) {
         req.flash('errorUserFind', 'This username is already registred')
-        return res.redirect('/auth/signup')
+        return res.redirect('/')
       }
       const salt = bcrypt.genSaltSync(saltRounds)
       const hashedPassword = bcrypt.hashSync(password, salt)
