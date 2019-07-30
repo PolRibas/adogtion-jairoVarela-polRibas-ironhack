@@ -1,5 +1,7 @@
 const express = require('express')
 const router = express.Router()
+const moment = require('moment')
+moment.locale('es');
 
 const User = require('../models/User.js')
 const Shelter = require('../models/Shelter.js')
@@ -11,7 +13,7 @@ router.get('/', async (req, res, next) => {
 try{
   if(req.session.currentUser){
       const dogs = await Dogs.find().populate('shelter')
-      const user = await req.session.currentUser;
+      const user = req.session.currentUser;
     if (user.type === 'User') {
         const id = user._id;
         const userWithDogs = await User.findById(id).populate('likeDogs')
@@ -33,11 +35,15 @@ try{
                return 1;}
              return 0;
          }) 
+         notLikedDogs.forEach((dog) => {
+             dog.date = moment(dog.createdAt).startOf('minutes').fromNow()
+         })
+
         return res.render('users/feed', {notLikedDogs})
     } else if (user.type === 'Shelter') {
         let shelterdog = [];
         for (dog in dogs){
-            if(dogs[dog].shelter[0].username === user.username){
+            if(dogs[dog].shelter.username === user.username){
                 shelterdog.push(dogs[dog])
             }
         }
@@ -52,6 +58,9 @@ try{
               return 1;}
             return 0;
         }) 
+        shelterdog.forEach((dog) => {
+            dog.date = moment(dog.createdAt).startOf('minutes').fromNow()
+        })
         return res.render('shelters/feed', {shelterdog})
     }
   }
