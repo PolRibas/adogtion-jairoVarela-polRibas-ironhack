@@ -1,8 +1,8 @@
 {{>navUser}}
 <section>
 {{#each userNotes.notes}}
-    <section>
-    <img src="{{idDog.image}}" alt="" width="100px">
+<article>
+    <img class="dog-img" src="{{idDog.image}}" alt="">
     <h3>Shelter: {{idDog.shelter.[0].username}}</h3>
     {{#each message}}
         <p>{{this}}</p>
@@ -16,7 +16,7 @@
             </form>
         {{/if}}
     {{/if}}
-    </section>
+</article>
 {{/each}}
 </section>
 <script src="/javascripts/users/notes.js"></script>
