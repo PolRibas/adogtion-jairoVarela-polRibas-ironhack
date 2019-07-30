@@ -2,39 +2,43 @@
 
     <form action="/app/changePhoto" method="POST" enctype="multipart/form-data">
         <label for="image">
+            <img class="profile-img" src="{{image}}"/>
             <input onchange="this.form.submit()" type="file" name="image" id="image" style="display:none;"/>
-            <img src="{{image}}" width="200px"/>
          </label>
     </form>
     <h2>{{username}}</h2>
     <h3>{{name}}</h3>
-    <p>Email: {{email}}</p>
+    <p>Website: <a target="__blank" href="https://www.{{website}}">{{website}}</a></p>
+    <p>Address: {{address}}</p>
     <p>Phone: {{phone}}</p>
-    <p>Webside: {{website}}</p>
-    <p>address: {{address}}</p>
-    {{>pencil}}
+    <p>Email: {{email}}</p>
     <form action="/app/profile/update" method="POST">
-        <label>Username:
-            <input type="text" name="username" id="username" disabled value="{{username}}" >
-        </label>
-        <label>Shelter Name:
-            <input type="text" name="name" id="name" placeholder="first Name" value="{{name}}">
-        </label>
-        <label>Phone:
-            <input type="Number" name="phone" id="phone" placeholder="phone" value="{{phone}}">
-        </label>
-        <label>Email:
-            <input type="text" name="email" id="email" placeholder="email" value="{{email}}">
-        </label>
-        <label>Webside:
-            <input type="text" name="website" id="website" placeholder="website" value="{{website}}">
-        </label>
-        <label>City:
-            <input type="text" name="address" id="address" placeholder="address" value="{{address}}">
-        </label>
-        <button type="submit">Update</button>
+        <label class="uk-form-label" for="form-horizontal-text">Username</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" type="text" name="username" id="username" disabled value="{{username}}" >
+                </div>
+         <label class="uk-form-label" for="form-horizontal-text">Shelter Name</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" type="text" name="name" id="name" placeholder="Shelter's Name" value="{{name}}">
+                </div>
+         <label class="uk-form-label" for="form-horizontal-text">Email</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" type="text" name="email" id="email" placeholder="someone@example.com" value="{{email}}">
+                </div>
+         <label class="uk-form-label" for="form-horizontal-text">Phone</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" type="text" name="phone" id="phone" placeholder="Input a valid phone number" value="{{phone}}">
+                </div>
+         <label class="uk-form-label" for="form-horizontal-text">Website</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" type="String" name="website" id="website" placeholder="shelterexample.com" value="{{website}}">
+                </div>
+         <label class="uk-form-label" for="form-horizontal-text">Address</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" type="text" name="address" id="address" placeholder="Address" value="{{address}}">
+                </div>
+        <button class="uk-button uk-button-default" ype="submit">Update</button>
     </form>
-
     <form action="/app/profile/delete" method="POST">
-        <button type="submit">Delete profile</button>
+        <button type="submit">Delete Profile</button>
     </form>

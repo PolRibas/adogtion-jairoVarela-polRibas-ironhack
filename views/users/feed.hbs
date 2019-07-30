@@ -1,10 +1,9 @@
 {{>navUser}}
 <h1 class="uk-heading">Dogs</h1>
 <section class="dog-list">
-
 {{#if notLikedDogs}}
 {{#each notLikedDogs}}
-<div class="wrapper dog-wrapper">
+<div class="wrapper dog-article">
   <div class="container">
     <div class="top" style="background-image: url({{image}})"></div>
     <div class="bottom">
@@ -15,16 +14,11 @@
         </div>
         <div class="buy"><i id="like-button" class="material-icons">favorite</i></div>
         
-        <form id="like-form" class='chat-form' action='/api/likeDog'>
-            <input class="uk-input" name="shelter" value="{{shelter._id}}" style="display:none;">
-            <input class="uk-input" name="dog" value="{{_id}}" style="display:none;">
-            <button class="uk-button uk-button-secondary uk-button-small" type="submit">Like</button>
-        </form>
       </div>
       <div class="right">
         <div class="done"><i class="material-icons">done</i></div>
         <div class="details">
-         <form id="like-form" class='chat-form' action='/api/likeDog'>
+        <form id="like-form" class='chat-form' action='/api/likeDog'>
             <input class="uk-input" name="shelter" value="{{shelter._id}}" style="display:none;">
             <input class="uk-input" name="dog" value="{{_id}}" style="display:none;">
             <button class="uk-button uk-button-secondary uk-button-small" type="submit">Like</button>
@@ -62,14 +56,6 @@
         <tr>
           <td>{{breed}}</td>
           <td>{{shelter.username}}</td>
-        </tr>
-        <tr>
-          <th>Something</th>
-          <th>Something</th>
-        </tr>
-        <tr>
-          <td>200mm</td>
-          <td>200mm</td>
         </tr>
       </table>
     </div>

@@ -2,7 +2,7 @@
 
 const main = () => {
     console.log('funcion')
-    const dogCard = document.querySelectorAll('.dog-wrapper')
+    const dogCard = document.querySelectorAll('.dog-article')
     const eventToForm = () => { 
         const action = document.querySelectorAll('.chat-form');
         console.log(action)
