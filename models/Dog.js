@@ -25,10 +25,17 @@ const dogSchema = new Schema({
     type: String,
     default: 'https://st-listas.20minutos.es/images/2013-11/371972/4234737_640px.jpg?1383885591'
   },
-  shelter: [{
+  shelter: {
     type: ObjectId,
     ref: 'Shelter'
-  }],
+  },
+  gender: {
+    type: String,
+    enum: ['Male', 'Female']
+  },
+  description: {
+    type: String
+  },
   status: {
     type: String,
     enum: ['None','Liked', 'Matched', 'Accepted', 'Adopted'],

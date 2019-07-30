@@ -27,12 +27,14 @@ router.get('/dogs/create', isNotLoggedIn, (req, res, next) => {
 
 router.post('/dogs/create', parser.single('image'), isNotLoggedIn, async (req, res, next) => {
     const id = req.session.currentUser._id
-    const {name, breed, size, age} = req.body
+    const {name, breed, size, age, gender, description} = req.body
     const picture = req.file.secure_url
-    await Dogs.create({name, breed, size, age, image: picture, shelter: id})
+    await Dogs.create({name, breed, gender, description, size, age, image: picture, shelter: id})
     return res.redirect('/')
 })
 
+
+//doing get
 router.post('/dogs/:id/update', isNotLoggedIn, (req, res, next) => {
     return res.redirect('/')
 })
@@ -90,25 +92,27 @@ router.post('/profile/delete', isNotLoggedIn, async (req, res, next) => {
     const id = req.session.currentUser._id
     const notes = await Notes.find().populate('idDog')
     if (req.session.currentUser.type === 'User') {
-        for (note of notes){        
-            if (note.UserId.equals(id)){
-                await Notes.deleteOne(note._id)
+        for (note of notes){      
+            if (note.idUser.equals(id)){
+                await Notes.deleteOne({_id: note._id})
             }
         }
-        await User.deleteOne(id)
+        await User.deleteOne({_id: id})
+        delete req.session.currentUser;
     } else if (req.session.currentUser.type === 'Shelter') {
-        const dogs = Dogs.find();
+        const dogs = await Dogs.find();
         for(dog of dogs){
             if (dog.shelter.equals(id)){
-                await Dogs.deleteOne(dog._id)
+                await Dogs.deleteOne({_id: dog._id})
             }
         }
         for (note of notes){
             if (note.idDog.shelter.equals(id)){
-                await Notes.deleteOne(note._id)
+                await Notes.deleteOne({_id: note._id})
             }
         }
-        await Shelter.deleteOne(id)
+        await Shelter.deleteOne({_id: id})
+        delete req.session.currentUser;
     }
     return res.redirect('/')
 })

@@ -14,7 +14,7 @@
      <p>Age: {{age}}</p>
     <form class='chat-form' action='/api/likeDog'>
 
-        <input name="shelter" value="{{shelter.[0]._id}}" style="display:none;">
+        <input name="shelter" value="{{shelter._id}}" style="display:none;">
         <input name="dog" value="{{_id}}" style="display:none;">
         <button type="submit">Favorites</button>
     </form>
