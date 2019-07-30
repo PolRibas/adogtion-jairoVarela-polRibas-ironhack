@@ -1,35 +1,46 @@
 {{>navShelter}}
 <form action="/app/dogs/create" method="POST" enctype="multipart/form-data">
-        <label>Dog Name:
-            <input type="text" name="name" id="name" placeholder="Dog Name" required>
-        </label>
-        <label>Breed:
-            <input type="text" name="breed" id="breed" placeholder="breed" required>
-        </label>
-        <label>size:
-            <select type="text" name="size" id="size">
-                <option name="Small" value="Small">Small</option>
-                <option name="Medium" value="Medium">Medium</option>
-                <option name="Large" value="Large">Large</option>
-                <option name="Extra Large" value="Extra Large">Extra Large</option>
+        <label for="image">
+            <input onchange="this.form.submit()" type="file" name="image" id="image" style="display:none;"/>
+            <img src="{{image}}"/>
+         </label>
+    </form>
+    <form action="/app/dogs/create" method="POST" enctype="multipart/form-data">
+         <label class="uk-form-label" for="form-horizontal-text">Dog's Name:</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" type="text" name="username" id="name" required placeholder="Dog's Name" >
+                </div>
+         <label class="uk-form-label" for="form-horizontal-text">Breed:</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" type="text" name="breed" id="breed" placeholder="Breed" placeholder="Stray if the dog doesn't have a clear breed" required>
+                </div>
+         <label class="uk-form-label" for="form-horizontal-text">Size:</label>
+            <div class="uk-form-controls">
+                <select class="uk-select" type="text" name="size" id="size">
+                <option class="uk-select" name="Small" value="Small">Small</option>
+                <option class="uk-select" name="Medium" value="Medium">Medium</option>
+                <option class="uk-select" name="Large" value="Large">Large</option>
+                <option class="uk-select" name="Extra Large" value="Extra Large">Extra Large</option>
             </select>
-        </label>
-        <label>Gender:
-            <select type="text" name="gender" id="gender">
-                <option name="Male" value="Male">Male</option>
-                <option name="Female" value="Female">Female</option>
+         <label class="uk-form-label" for="form-horizontal-text">Gender:</label>
+            <div class="uk-form-controls">
+                <select class="uk-select" type="text" name="gender" id="gender">
+                <option class="uk-select" name="Male" value="Male">Male</option>
+                <option class="uk-select" name="Female" value="Female">Female</option>
             </select>
-        </label>
-        <label>Description:
-            <textarea name="description" id="description" placeholder="Description"></textarea>
-        </label>
-        <label>Age:
-            <input type="text" name="age" id="age" placeholder="age">
-        </label>
-        <label>Weight:
-            <input type="text" name="weight" id="weight" placeholder="weight">
-        </label>
-        <input type="file" name="image" id="image" required/>
-        <button type="submit">Create</button>
-    </form> 
+                </div>
+         <label class="uk-form-label" for="form-horizontal-text">Age:</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" type="Number" name="age" id="age" placeholder="Age">
+                </div>
+         <label class="uk-form-label" for="form-horizontal-text">Weight:</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" type="text" name="weight" id="weight" placeholder="Weight">
+                </div>
+         <label class="uk-form-label" for="form-horizontal-text">Description:</label>
+            <div class="uk-form-controls">
+                <textarea class="uk-textarea" type="text" name="civilStatus" id="civilStatus" placeholder="Tell the dog's story so it melts the hearts of our users!"></textarea>
+                </div>
+        <button class="uk-button uk-button-default" type="submit">Create</button>
+    </form>
 
