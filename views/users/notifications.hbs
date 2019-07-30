@@ -28,6 +28,9 @@
             </form>
         {{/if}}
     {{/if}}
+    <form class="delete-btn" action="/api/message/{{_id}}/delete">
+        <button class="submit uk-button" type="submit">Delete</button>
+    </form>
 </article>
 {{/each}}
 {{else}}

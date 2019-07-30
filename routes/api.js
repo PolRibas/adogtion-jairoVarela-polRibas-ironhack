@@ -65,4 +65,17 @@ router.post('/Dogmessage/:id', async (req, res, next) => {
 })
 
 
+router.post('/message/:id/delete', async (req, res, next) => {
+    try{
+        const id = req.params.id
+        const nota = await Notes.findById(id).populate('idDog')
+        await User.findByIdAndUpdate(nota.idUser,{$pull: {notes: id}})
+        await Shelter.findByIdAndUpdate(nota.idDog.shelter,{$pull: {notes: id}})
+        await Notes.deleteOne({_id: id})
+        res.json({message: `Chat deleted`})
+    }catch(err){
+        (err)
+    }
+})
+
 module.exports = router
