@@ -1,33 +1,18 @@
 {{>navShelter}}
 {{#if shelterNotes.notes}}
 {{#each shelterNotes.notes}}
-    <section>
+<article class="uk-comment notifications">
+    <header>
+        <h3>{{idUser.username}}</h3>
         <img src="{{idUser.image}}" alt="" width="50px">
         <p>{{idUser.name}} {{idUser.surName}}</p>
-        {{#if message.[3]}}
-        {{!-- email
-        telefono --}}
-        {{/if}}
-        {{#each message}}
-            <p class="chat">{{this}}</p>
-         {{/each}}
-         {{#if message.[1]}}
-                {{#if message.[2]}}
-                    {{#if message.[3]}}
-                    {{else}}
-                        <form class="chat-form" action="/api/Dogmessage/{{_id}}">
-                            <input id="information" type="text" name="information" placeholder="write your information" />
-                            <button class="submit" type="submit">Send</button>
-                        </form>
-                    {{/if}}
-                {{/if}}
-            {{else}}
-            <form class="ok-form" action="/api/{{_id}}">
-                <button type="submit">Request Information</button>
-            </form>
-         {{/if}}
         <img src="{{idDog.image}}" alt="" width="100px">
-    </section>
+    </header>
+    <form class="delete-btn" action="/api/message/{{_id}}/delete">
+        <button class="submit uk-button" type="submit">Delete</button>
+    </form>
+    <a href="/app/notifications/{{_id}}">chat</a>
+</article>
 {{/each}}
 {{else}}
 <h2>You don't have any notifications yet</h2>

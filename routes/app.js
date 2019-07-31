@@ -38,8 +38,6 @@ router.get('/dogs/:id/update', isNotLoggedIn, async (req, res, next) => {
         return res.render('/')
     } else if (req.session.currentUser.type === 'Shelter') {
         const id = req.params.id;
-        console.log(id)
-        console.log(req.params)
         const dog = await Dogs.findById(id)
         return res.render('shelters/editDog', {dog})
     }
@@ -70,7 +68,6 @@ router.post('/dogs/:id/delete', isNotLoggedIn, async (req, res, next) => {
 
 router.post('/changePhoto/:id', parser.single('image'), isNotLoggedIn, async (req, res, next) => {
     try{ 
-        console.log('esta bien')
         const image = req.file.secure_url
         const id = req.params.id;
         await Dogs.findByIdAndUpdate(id, {image: image}) 
@@ -213,6 +210,31 @@ router.get('/notifications', isNotLoggedIn, async (req, res, next) => {
             }
         })
         return res.render('shelters/notifications', {shelterNotes})
+    }
+    }catch(err){
+        next(err)
+    }
+})
+
+router.get('/notifications/:id', isNotLoggedIn, async (req, res, next) => {
+    try{
+    const id = req.params.id
+    const chat = await Notes.findById(id).populate('idUser').populate({
+        path: 'idDog',
+        populate: {
+            path: 'shelter',
+            model: 'Shelter'
+        }
+    })
+    chat.user = req.session.currentUser
+    if (req.session.currentUser.type === 'User') {
+        chat.imUser = true
+        //comprobacion de que este chat es tuyo
+        return res.render('chat', {chat})
+    } else if (req.session.currentUser.type === 'Shelter') {
+        chat.imUser = false
+        //comprobacion de que este chat es tuyo
+        return res.render('chat', {chat})
     }
     }catch(err){
         next(err)

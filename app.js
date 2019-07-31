@@ -9,7 +9,7 @@ const hbs = require('hbs')
 const flash = require('connect-flash')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
-require('dotenv').config();
+require('dotenv').config();;
 
 const indexRouter = require('./routes/index')
 const usersRouter = require('./routes/app')
@@ -17,6 +17,7 @@ const authRouter = require('./routes/auth')
 const apiRouter = require('./routes/api')
 
 const app = express()
+
 
 mongoose.connect(process.env.MONGODB_URI, {
   keepAlive: true,
@@ -37,6 +38,7 @@ app.use(session({
     maxAge: 24 * 60 * 60 * 1000
   }
 }))
+
 
 app.use(flash())
 
