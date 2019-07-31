@@ -1,5 +1,6 @@
 {{>navShelter}}
 <section>
+    <h2 class="uk-heading">{{username}}'s Profile</h2>
     <form action="/app/changePhoto" method="POST" enctype="multipart/form-data">
         <label for="image">
             <img class="profile-img" src="{{image}}"/>
@@ -12,33 +13,6 @@
     <p>Address: {{address}}</p>
     <p>Phone: {{phone}}</p>
     <p>Email: {{email}}</p>
-    <form action="/app/profile/update" method="POST">
-        <label class="uk-form-label" for="form-horizontal-text">Username</label>
-            <div class="uk-form-controls">
-                <input class="uk-input" type="text" name="username" id="username" disabled value="{{username}}" >
-                </div>
-         <label class="uk-form-label" for="form-horizontal-text">Shelter Name</label>
-            <div class="uk-form-controls">
-                <input class="uk-input" type="text" name="name" id="name" placeholder="Shelter's Name" value="{{name}}">
-                </div>
-         <label class="uk-form-label" for="form-horizontal-text">Website</label>
-            <div class="uk-form-controls">
-                <input class="uk-input" type="String" name="website" id="website" placeholder="shelterexample.com" value="{{website}}">
-                </div>
-         <label class="uk-form-label" for="form-horizontal-text">Address</label>
-            <div class="uk-form-controls">
-                <input class="uk-input" type="text" name="address" id="address" placeholder="Address" value="{{address}}">
-                </div>
-         <label class="uk-form-label" for="form-horizontal-text">Phone</label>
-            <div class="uk-form-controls">
-                <input class="uk-input" type="text" name="phone" id="phone" placeholder="Input a valid phone number" value="{{phone}}">
-                </div>
-         <label class="uk-form-label" for="form-horizontal-text">Email</label>
-            <div class="uk-form-controls">
-                <input class="uk-input" type="text" name="email" id="email" placeholder="someone@example.com" value="{{email}}">
-                </div>
-        <button class="uk-button uk-button-default" ype="submit">Update</button>
-    </form>
-    <form action="/app/profile/delete" method="POST">
-        <button type="submit">Delete Profile</button>
-    </form>
+</section>
+    {{>shelterUpdate}}
+    {{>confirmDelete}}

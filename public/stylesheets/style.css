@@ -15,7 +15,7 @@ header {
   margin: 1%;
 }
 main{
-  height: auto;
+  width: 100%;
 }
 body {
   margin: 0;
@@ -84,7 +84,7 @@ input[type=checkbox] {
   top: 5px;
   left: 4px;
   -webkit-transition: ease-in-out 200ms;
-  -moz-transition: ease-in-out 200ms;
+  -moz-transition: ease-usin-out 200ms;
   -ms-transition: ease-in-out 200ms;
   -o-transition: ease-in-out 200ms;
   transition: ease-in-out 200ms;
@@ -116,12 +116,11 @@ html.transition *:after {
 }
 
 .index-container{
-  height: 100vh;
-  top: 50%;
+  height: 95vh;
   display: flex;
-  flex-flow: column nowrap;
+  flex-flow: column wrap;
   justify-content: center;
-  align-content: center;
+  align-items: center;
 }
 
 .delete-div{
@@ -129,7 +128,8 @@ html.transition *:after {
   justify-content: center;
 }
 .profile-img{
-  max-width: 300px;
+  max-width: 150px;
+  border-radius: 50%;
 }
 
 .profile-page{
@@ -160,16 +160,15 @@ html.transition *:after {
 }
 }
 main{
-  width: 90%;
+  /* width: 90%; */
 }
 
-
+section{
+  margin: 1% 1% 1% 1%;
+}
 .dog-list article{
   margin: 1%;
   width: 300px;
-}
-.dog-img{
-/*  height: 100%; */
 }
 
 .uk-navbar {
@@ -187,4 +186,62 @@ main{
 .notifications-img{
   width: 100px;
   border-radius: 50%;
+}
+
+.index-btn{
+  width: 180px;
+}
+
+.fullscreen-bg {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: -100;
+  filter: grayscale(100%);
+
+}
+
+.fullscreen-bg .overlay {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 2;
+  background: black;
+  opacity: 0.5;
+}
+
+.fullscreen-bg__video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* width: 100%;
+  height: 100%; */
+}
+
+@media (min-aspect-ratio: 16/9) {
+  #myVideo {
+      width:100%;
+      height: auto;
+      
+  }
+}
+
+@media (max-aspect-ratio: 16/9) {
+  #myVideo { 
+      width:auto;
+      height: 100%;
+  }
+}
+
+#logo-white{
+  width: 300px;
+}
+
+.user-profile{
+  margin: 3% 15% 0 15%;
 }

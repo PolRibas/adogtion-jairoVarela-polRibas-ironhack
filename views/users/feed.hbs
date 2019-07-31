@@ -1,6 +1,6 @@
 {{>navUser}}
-<h1 class="uk-heading">Dogs</h1>
 <section class="dog-list">
+<h1 class="uk-heading">Dogs</h1>
 {{#if notLikedDogs}}
 {{#each notLikedDogs}}
 <div class="wrapper dog-article">
@@ -65,5 +65,6 @@
 {{else}}
     <h3>There aren't any dogs published at the moment...</h3>
 {{/if}}
+
 <script src="/javascripts/uikit-icons.min.js"></script>
 <script src="/javascripts/users/like.js"></script>

@@ -1,0 +1,34 @@
+<center><button class="uk-button uk-button-primary uk-margin-top" uk-toggle="target: #updateProfile" type="button">Update Profile</button></center>
+<div id="updateProfile" uk-modal>
+   <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body">
+        <h2 class="uk-modal-title">Update Shelter</h2>
+<form action="/app/profile/update" method="POST">
+        <label class="uk-form-label" for="form-horizontal-text">Username</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" type="text" name="username" id="username" disabled value="{{username}}" >
+                </div>
+         <label class="uk-form-label" for="form-horizontal-text">Shelter Name</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" type="text" name="name" id="name" placeholder="Shelter's Name" value="{{name}}">
+                </div>
+         <label class="uk-form-label" for="form-horizontal-text">Website</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" type="String" name="website" id="website" placeholder="shelterexample.com" value="{{website}}">
+                </div>
+         <label class="uk-form-label" for="form-horizontal-text">Address</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" type="text" name="address" id="address" placeholder="Address" value="{{address}}">
+                </div>
+         <label class="uk-form-label" for="form-horizontal-text">Phone</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" type="text" name="phone" id="phone" placeholder="Input a valid phone number" value="{{phone}}">
+                </div>
+         <label class="uk-form-label" for="form-horizontal-text">Email</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" type="text" name="email" id="email" placeholder="someone@example.com" value="{{email}}">
+                </div>
+        <center><button class="uk-button uk-button-primary uk-margin-top" type="submit">Update</button></center>
+    </form>
+    <button class="uk-modal-close-default" type="button" uk-close></button>
+</div>
+</div>
