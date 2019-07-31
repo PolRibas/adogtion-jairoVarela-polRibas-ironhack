@@ -78,7 +78,7 @@
 }
 .wrapper .container .bottom .right {
   width: 50%;
-  background: #4e1a82;
+  background: #abb2fcff;
   color: white;
   float: right;
   height: 200%;
@@ -126,7 +126,7 @@
 }
 .wrapper .inside {
   z-index: 9;
-  background: #4e1a82;
+  background: #abb2fcff;
   width: 140px;
   height: 140px;
   position: absolute;
