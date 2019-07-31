@@ -1,0 +1,52 @@
+<center><button class="uk-button uk-button-primary" uk-toggle="target: #updateProfile" type="button">Update Profile</button></center>
+    <div id="updateProfile" uk-modal>
+   <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body">
+        <h2 class="uk-modal-title">Update User</h2>
+    <form class="uk-form-stacked uk-margin-large" action="/app/profile/update" method="POST">
+         <label class="uk-form-label" for="form-stacked-text">Username</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" type="text" name="username" id="username" disabled value="{{username}}" >
+                </div>
+         <label class="uk-form-label" for="form-stacked-text">First Name</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" type="text" name="name" id="name" placeholder="First Name" value="{{name}}">
+                </div>
+         <label class="uk-form-label" for="form-stacked-text">Surname</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" type="text" name="surName" id="surName" placeholder="Surname" value="{{surName}}">
+                </div>
+         <label class="uk-form-label" for="form-stacked-text">Email</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" type="text" name="email" id="email" placeholder="someone@example.com" value="{{email}}">
+                </div>
+         <label class="uk-form-label" for="form-stacked-text">Phone</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" type="text" name="phone" id="phone" placeholder="Input a valid phone number" value="{{phone}}">
+                </div>
+         <label class="uk-form-label" for="form-stacked-text">Age</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" type="Number" name="age" id="age" placeholder="Age" value="{{age}}">
+                </div>
+         <label class="uk-form-label" for="form-stacked-text">City</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" type="text" name="city" id="city" placeholder="City" value="{{city}}">
+                </div>
+         <label class="uk-form-label" for="form-stacked-text">Occupation</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" type="text" name="ocupation" id="ocupation" placeholder="Occupation" value="{{ocupation}}">
+                </div>
+         <label class="uk-form-label" for="form-stacked-text">Civil Status:</label>
+                <div class="uk-form-controls">
+                <select class="uk-select" type="text" name="size" id="size">
+                <option class="uk-select" name="Single" value="Single">Single</option>
+                <option class="uk-select" name="Married" value="Married">Married</option>
+                <option class="uk-select" name="Divorced" value="Divorced">Divorced</option>
+                <option class="uk-select" name="It's Complicated" value="It's Complicated">It's Complicated</option>
+            </select>
+            </div>
+        <center><button class="uk-button uk-button-primary uk-margin-top" ype="submit">Update</button></center>
+    </form>
+     <button class="uk-modal-close-default" type="button" uk-close></button>
+</div>
+</div>
+

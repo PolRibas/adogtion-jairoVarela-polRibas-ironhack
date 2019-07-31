@@ -1,23 +1,20 @@
 {{>navUser}}
-<div class="profile-page">
- <form class="uk-form-stacked" action="/app/changePhoto" method="POST" enctype="multipart/form-data">
+<section class="user-profile">
+ <center><form class="uk-form-stacked" action="/app/changePhoto" method="POST" enctype="multipart/form-data">
     <label for="image">
         <img class="profile-img" src="{{image}}"> 
-        <input onchange="this.form.submit()" type="file" name="image" id="image" style="display: inline;">
+        <input class="uk-input" onchange="this.form.submit()" type="file" name="image" id="image">
     </label>
+  
 </form>
-    <h2>{{username}}</h2>
+    <h2 class="uk-heading">{{username}}'s' Profile</h2>
+</center>
     <h3>{{name}} {{surName}}</h3>
     <p>Age: {{age}}</p>
     <p>Occupation: {{ocupation}}</p>
     <p>Civil Status: {{civilStatus}}</p>
     <p>City: {{city}}</p>
     <p>Phone: {{phone}}</p>
-    <p>Email: {{email}}</p>
-</div>
-    <div class="delete-div">
-    <form action="/app/profile/delete" method="POST">
-        <button class="uk-button uk-button-danger" type="submit">Delete profile</button>
-    </form>
-    </div>
-    {{>profileUpdate}}
+</section>
+    {{>userUpdate}}
+    {{>confirmDelete}}

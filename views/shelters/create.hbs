@@ -1,8 +1,11 @@
 {{>navShelter}}
+<section>
+<h2 class="uk-heading">Add Dog</h2>
 <form action="/app/dogs/create" method="POST" enctype="multipart/form-data">
-        <label for="image">
-            <input type="file" name="image" id="image"/>
-         </label>
+         <label class="uk-form-label" for="form-horizontal-text">Image:</label>
+         <div class="uk-form-controls uk-placeholder">
+            <input class="uk-input" type="file" name="image" id="image"/>
+         </div>
          <label class="uk-form-label" for="form-horizontal-text">Dog's Name:</label>
             <div class="uk-form-controls">
                 <input class="uk-input" type="text" name="name" id="name" required placeholder="Dog's Name" >
@@ -38,6 +41,6 @@
             <div class="uk-form-controls">
                 <textarea class="uk-textarea" name="description" id="description" placeholder="Tell the dog's story so it melts the hearts of our users!"></textarea>
                 </div>
-        <button class="uk-button uk-button-default" type="submit">Create</button>
+        <center><button class="uk-button uk-button-primary uk-margin-top" type="submit">Add Dog</button></center>
     </form>
-
+</section>

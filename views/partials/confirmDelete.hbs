@@ -1,0 +1,10 @@
+<center><button class="uk-button uk-button-danger uk-margin-top" uk-toggle="target: #confirmDelete" type="button">Delete Profile</button></center>
+<div id="confirmDelete" uk-modal>
+   <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body">
+        <p>Are you sure you want to delete your profile?</p>
+<form action="/app/profile/delete" method="POST">
+       <center><button class="uk-button uk-button-danger uk-margin-top" type="submit">Delete Profile</button></center>
+  </form>
+    <button class="uk-modal-close-default" type="button" uk-close></button>
+</div>
+</div>
