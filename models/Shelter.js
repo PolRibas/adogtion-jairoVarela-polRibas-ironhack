@@ -22,7 +22,7 @@ const shelterSchema = new Schema({
     default: 'https://estaticos.muyinteresante.es/media/cache/760x570_thumb/uploads/images/article/5c3871215bafe83b078adbe3/perro.jpg'
   },
   phone: {
-    type: Number
+    type: String
   },
   email: {
     type: String

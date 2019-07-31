@@ -116,10 +116,11 @@ html.transition *:after {
 }
 
 .index-container{
+  height: 100vh;
   top: 50%;
   display: flex;
   flex-flow: column nowrap;
-  justify-items: center;
+  justify-content: center;
   align-content: center;
 }
 

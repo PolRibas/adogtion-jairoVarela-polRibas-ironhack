@@ -104,8 +104,8 @@ router.post('/profile/update',isNotLoggedIn, async (req, res, next) => {
     if (req.session.currentUser.type === 'User') {
         try{
         const id = req.session.currentUser._id
-        const {name, surName, email, age, city, ocupation, civilStatus} = req.body
-        await User.findByIdAndUpdate(id,{name, surName, email, age, city, ocupation, civilStatus})
+        const {name, surName, email, age, city, ocupation, civilStatus, phone} = req.body
+        await User.findByIdAndUpdate(id,{name, surName, email, age, city, ocupation, civilStatus, phone})
         const user = await User.findById(id)
         req.session.currentUser = user
         return res.redirect('/app/profile')
