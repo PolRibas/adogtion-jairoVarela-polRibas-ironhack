@@ -5,27 +5,39 @@ const main = () => {
     const dogCard = document.querySelectorAll('.dog-article')
     const eventToForm = () => { 
         const action = document.querySelectorAll('.chat-form');
-        console.log(action)
         action.forEach( (form, index) => {
-            console.log(index)
             form.addEventListener('submit', async (event)=>{
             event.preventDefault()
-            console.log(index)
             const information = { 
                 shelter: event.srcElement.shelter.value, 
                 dog: event.srcElement.dog.value 
             }
-            console.log(information)
-            console.log(event.target.action)
-            console.log(index)
             const response = await axios.post(`${event.target.action}`, information)
             dogCard[index].remove()
         }
         )}
         )
     }
+    const likeOnlyOne = async () =>{
+        const buys = await document.querySelectorAll('.buy')
+        const bottoms = await document.querySelectorAll('.bottom')
+        const remuves = document.querySelectorAll('.remove')
+
+         buys.forEach((buy,index) => {
+             buy.addEventListener('click', () =>
+                bottoms[index].classList.add('clicked')
+                )
+            })
+            
+         remuves.forEach((remuve,index) => {
+            remuve.addEventListener('click', () =>
+               bottoms[index].classList.remove('clicked')
+            )
+        })
+    }
 
     eventToForm();
+    likeOnlyOne();
 
 
 }
