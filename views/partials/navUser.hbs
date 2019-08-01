@@ -2,21 +2,21 @@
     <div class="uk-navbar-center">
         <ul class="uk-navbar-nav">
             <li class="uk-active"><a href="/">Feed</a></li>
-             <li><a href="../../app/notifications">Messages</a></li>
+             <li class="uk-active" ><a href="../../app/notifications">Messages</a></liclass="uk-active">
         </ul>
         <div class="uk-navbar-right">
         <ul class="uk-navbar-nav">
-            <li>
+            <li class="uk-active">
                 <a href="#">Settings</a>
                 <div class="uk-navbar-dropdown">
                     <ul class="uk-nav uk-navbar-dropdown-nav">
-                        <li><a href="/app/profile">Edit Profile</a></li>
+                        <li><center><a href="/app/profile">Edit Profile</a></center></li>
                         {{!-- <li> <input class="container_toggle" type="checkbox" id="switch" name="mode">
                             <label class="darkmode-label" for="switch">Toggle</label> </li> --}}
                         <li class="uk-nav-divider"></li>
                         <li class="uk-active">
                             <form action="/auth/logout" method="POST">
-                            <button class="uk-button" type="submit">Logout</button>
+                            <center><button class="uk-button uk-button-secondary" type="submit">Logout</button></center>
                             </form>
                         </li>
                        </ul>
