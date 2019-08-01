@@ -13,7 +13,7 @@ router.post('/likeDog', async (req, res, next) => {
     const shelterId = req.body.shelter
     const dogId = req.body.dog;
     const note = await Notes.create({idDog: req.body.dog, idUser: id})
-    await Notes.findByIdAndUpdate(note._id,{$push: {message: `${username} liked wants to be adogted!`}})
+    await Notes.findByIdAndUpdate(note._id,{$push: {message: `${username} wants to be adogted!`}})
     await Shelter.findByIdAndUpdate(shelterId,{$push: {notes: note._id}})
     await Dogs.findByIdAndUpdate(dogId,{ status: 'Liked' })
     await User.findByIdAndUpdate(id,{$push: {notes: note._id}})
