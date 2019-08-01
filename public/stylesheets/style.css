@@ -133,8 +133,8 @@ html.transition *:after {
   justify-content: center;
 }
 .profile-img{
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
 }
 
@@ -280,4 +280,21 @@ section{
 
 .chats{
   margin: 0 5% 0 5%;
+}
+
+.chat-profile{
+  display: flex;
+}
+
+.center{
+  text-align: center;
+}
+
+.chat-info{
+  display: block;
+}
+
+.chat-img{
+  width: 30px;
+  height: auto;
 }

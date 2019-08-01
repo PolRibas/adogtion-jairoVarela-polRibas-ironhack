@@ -1,23 +1,31 @@
 {{#if chat.imUser}}
 {{>navUser}}
 <section class="perfilView">
+    <div class="chat-profile">
 <img src={{chat.idDog.shelter.image}} class="profile-img">
 <h3>{{chat.idDog.shelter.username}}</h3>
+</div>
+<div class="chat-info">
 <p>Phone: {{chat.idDog.shelter.phone}}</p>
 <p>Email: {{chat.idDog.shelter.email}}</p>
 <p>Webside: {{chat.idDog.shelter.website}}</p>
-<p>Adress: {{chat.idDog.shelter.address}}</p>
+<p>Address: {{chat.idDog.shelter.address}}</p>
+</div>
 </section>
 {{else}}
 {{>navShelter}}
 <section class="perfilView">
+    <div class="chat-profile"></div>
 <img src={{chat.idUser.image}} width="100px">
 <h3>{{chat.idUser.username}}</h3>
+</div>
+<div class="chat-info">
 <p>{{chat.idUser.name}} {{chat.idUser.surName}}</p>
 <p>Phone: {{chat.idUser.phone}}</p>
 <p>City: {{chat.idUser.city}}</p>
 <p>Ocupation: {{chat.idUser.ocupation}}</p>
 <p>Email: {{chat.idUser.email}}</p>
+</div>
 </section>
 {{/if}}
 <section class="chat-box">

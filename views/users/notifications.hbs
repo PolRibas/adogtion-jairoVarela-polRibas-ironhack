@@ -3,7 +3,7 @@
 <h1 class="uk-heading">Messages</h1>
 {{#if userNotes.notes}}
 {{#each userNotes.notes}}
-<article class="uk-comment dog-notes">
+<article class="uk-comment dog-notes notifications">
     <header class="uk-comment-header uk-grid-medium uk-flex-middle" uk-grid>
         <div class="uk-width-auto">
             <img class="uk-comment-avatar" src="{{idDog.image}}" width="80" height="80" alt="">
@@ -12,10 +12,10 @@
             <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="#">{{idDog.shelter.username}}</a></h4>
             <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="#">{{idDog.name}}</a></h4>
         </div>
-    <a class="uk-button-small uk-button uk-button-primary uk-margin-small-top" href="/app/notifications/{{_id}}">CHAT</a>
+        <div><a class=" uk-button uk-button-primary uk-margin-small-top" href="/app/notifications/{{_id}}">CHAT</a>
     <form class="delete-btn" action="/api/message/{{_id}}/delete">
-        <button class="uk-button-small submit uk-button uk-button-danger uk-margin-small-top" type="submit">Delete</button>
-    </form>
+        <button class="submit uk-button uk-button-danger uk-margin-small-top" type="submit">Delete</button>
+    </form></div>
     </header>
 </article>
 {{/each}}
