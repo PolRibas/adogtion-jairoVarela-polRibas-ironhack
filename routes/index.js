@@ -7,6 +7,7 @@ const User = require('../models/User.js')
 const Shelter = require('../models/Shelter.js')
 const Dogs = require('../models/Dog.js')
 const Notes = require('../models/Notes.js')
+const {parser, cloudinary} = require('../config/cloudinary')
 
 /* GET home page. */
 router.get('/', async (req, res, next) => {
@@ -37,6 +38,11 @@ try{
          }) 
          notLikedDogs.forEach((dog) => {
              dog.date = moment(dog.createdAt).startOf('minutes').fromNow()
+             const image = cloudinary.image(dog.image, { transformation: [{width: 360, height: 640, crop: 'fill'}], type: 'fetch' });
+             const splittedImage = image.split(' ');
+             const src = splittedImage[1];
+             const url = src.split("'")[1];
+             dog.cropped = url;
          })
 
         return res.render('users/feed', {notLikedDogs})
@@ -60,6 +66,11 @@ try{
         }) 
         shelterdog.forEach((dog) => {
             dog.date = moment(dog.createdAt).startOf('minutes').fromNow()
+             const image = cloudinary.image(dog.image, { transformation: [{width: 360, height: 640, crop: 'fill'}], type: 'fetch' });
+             const splittedImage = image.split(' ');
+             const src = splittedImage[1];
+             const url = src.split("'")[1];
+             dog.cropped = url;
         })
         return res.render('shelters/feed', {shelterdog})
     }

@@ -5,7 +5,7 @@ const User = require('../models/User.js')
 const Shelter = require('../models/Shelter.js')
 const Dogs = require('../models/Dog.js')
 const Notes = require('../models/Notes.js')
-const parser = require('../config/cloudinary')
+const {parser} = require('../config/cloudinary')
 
 router.get('/dog/:id', isNotLoggedIn, (req, res, next) => {
     const id = req.params;
