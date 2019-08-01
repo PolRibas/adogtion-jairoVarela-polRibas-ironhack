@@ -2,12 +2,17 @@
 
 html {
   box-sizing: border-box;
-  height: 100%;
+  
 
-}  
+}
 *, *:before, *:after {
   box-sizing: inherit;
 }
+
+body {
+  margin: 0;
+  padding: 0;
+}  
 
 header {
   display: flex;
@@ -136,7 +141,7 @@ html.transition *:after {
   display: flex;
   flex-flow: column nowrap;
   width: 100%;
-
+  
 }
 
 .dog-list{
@@ -146,18 +151,20 @@ html.transition *:after {
   flex-flow: column wrap;
 }
 @media (min-width: 500px){
-.dog-list{
-  display: flex;
-  align-items: flex-start;
-  flex-flow: row wrap;
-}
+  .dog-list{
+    display: flex;
+    align-items: flex-start;
+    flex-flow: row wrap;
+  }
 }
 @media (max-width: 500px){
-.dog-list article{
-  
-  width: 100%;
-
-}
+  .dog-list article{
+    width: 100%; 
+  }
+  .uk-navbar{
+    position: fixed !important;
+    bottom: 0;
+  }
 }
 main{
   /* width: 90%; */
@@ -244,4 +251,19 @@ section{
 
 .user-profile{
   margin: 3% 15% 0 15%;
+}
+
+.no-items{
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  height: 70vh;
+}
+
+.dog-date{
+  font-size: 14px;
+}
+
+.dog-notes{
+  margin: 2%;
 }

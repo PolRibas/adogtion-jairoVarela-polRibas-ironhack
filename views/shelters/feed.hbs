@@ -1,15 +1,16 @@
 {{>navShelter}}
-<section class="dog-list">
 <h1 class="uk-heading">My Dogs</h1>
+<section class="dog-list">
 {{#each shelterdog}}
+
 <div class="wrapper dog-wrapper">
   <div class="container">
     <div class="top" style="background-image: url({{cropped}})"></div>
     <div class="bottom">
       <div class="left">
         <div class="details">
-          <h1>{{name}}</h1>
-          <p>{{date}}</p>
+          <h2>{{name}}</h2>
+          <p class="dog-date">{{date}}</p>
         </div>
         <div class="buy"><a href="/app/dogs/{{_id}}/update"><i class="material-icons">edit</i></a></div>
       </div>
@@ -22,7 +23,7 @@
       </div>
     </div>
   </div>
-  <div class="inside">
+<div class="inside">
     <div class="icon"><i class="material-icons">info_outline</i></div>
     <div class="contents">
       <table>
@@ -51,12 +52,16 @@
           <td>{{shelter.username}}</td>
         </tr>
       </table>
+      <p>{{description}}</p>
     </div>
   </div>
 </div>
 {{/each}}
+</section>
 {{#if nonDogs}}
-    <h2>You don't have dogs ... <a href="../../app/dogs/create">Add your first one!</a></h2>
+<div class="no-items">
+    <h3>You don't have any dogs ... <a href="../../app/dogs/create">Add your first one!</a></h3>
+    </div>
 {{/if}}
 </section>
 

@@ -1,0 +1,10 @@
+<center><button class="uk-button uk-button-danger uk-margin-top" uk-toggle="target: #confirmDelete" type="button">Delete Dog</button></center>
+<div id="confirmDelete" uk-modal>
+   <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body">
+        <center><p>Are you sure you want to delete {{dog.name}}'s profile?</p></center>
+<form action="/app/dogs/{{dog._id}}/delete" method="POST">
+       <center><button class="uk-button uk-button-danger uk-margin-top" type="submit">Yes, delete</button></center>
+  </form>
+    <button class="uk-modal-close-default" type="button" uk-close></button>
+</div>
+</div>
