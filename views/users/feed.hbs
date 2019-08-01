@@ -3,7 +3,7 @@
 <section class="dog-list">
 {{#if notLikedDogs}}
 {{#each notLikedDogs}}
-<div class="wrapper dog-article">
+<div id="{{_id}}" class="wrapper dog-article">
   <div class="container">
     <div class="top" style="background-image: url({{cropped}})"></div>
     <div class="bottom">
@@ -21,7 +21,7 @@
         <p>Are you sure?</p>
         <form id="like-form" class='chat-form' action='/api/likeDog'>
             <input class="uk-input" name="shelter" value="{{shelter._id}}" style="display:none;">
-            <input class="uk-input" name="dog" value="{{_id}}" style="display:none;">
+            <input id="idClicked" class="uk-input" name="dog" value="{{_id}}" style="display:none;">
             <button id="like" style="color:white" class="uk-button uk-button-default uk-button-small" type="submit">Like</button>
         </form>
         </div>
@@ -69,17 +69,5 @@
     <h3>There aren't any dogs published at the moment...</h3>
 </div>
 {{/if}}
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="/javascripts/uikit-icons.min.js"></script>
 <script src="/javascripts/users/like.js"></script>
-
-<script>
-$(document).ready(function(){
-  $("#like").click(function(){
-    $(".dog-article").fadeOut();
-  });
-  $(".btn2").click(function(){
-    $("p").fadeIn();
-  });
-});
-</script>
