@@ -1,23 +1,39 @@
 {{>navShelter}}
 {{#if shelterNotes.notes}}
 {{#each shelterNotes.notes}}
-    <section>
-        <img src="{{idUser.image}}" alt="" width="50px">
-        <p>{{idUser.name}} {{idUser.surName}}</p>
+<article class="uk-comment dog-notes">
+    <header class="uk-comment-header uk-grid-medium uk-flex-middle" uk-grid>
+       <div class="uk-width-auto">
+            <img class="uk-comment-avatar" src="{{idUser.image}}" width="80" height="80" alt="{{idUser.name}}">
+            <img src="{{idDog.image}}" alt="{{idDog.name}}" width="80" height="80">
+        </div>
+        <div class="uk-width-expand">
+            <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="/app/profile/{{idUser._id}}/update">{{idUser.username}}</a></h4>
+            <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="/app/dogs/{{idDog._id}}/update">{{idDog.name}}</a></h4>
+            <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
+                <li><a href="#">12 days ago</a></li>
+                <li><form class="delete-btn" action="/api/message/{{_id}}/delete">
+        <button class="submit uk-button uk-button-danger uk-button-small" type="submit">Delete</button>
+    </form></li>
+            </ul>
+        </div>
+    </header>
+        
+   {{!--      <p>{{idUser.name}} {{idUser.surName}}</p> --}}
         {{#if message.[3]}}
-        {{!-- email
-        telefono --}}
         {{/if}}
         {{#each message}}
-            <p class="chat">{{this}}</p>
+        <div class="uk-comment-body">
+            <p class="chat"><a href="/app/profile/{{idUser}}">{{idUser.name}}</a>{{this}}</p>
+        </div>
          {{/each}}
          {{#if message.[1]}}
                 {{#if message.[2]}}
                     {{#if message.[3]}}
                     {{else}}
                         <form class="chat-form" action="/api/Dogmessage/{{_id}}">
-                            <input id="information" type="text" name="information" placeholder="write your information" />
-                            <button class="submit" type="submit">Send</button>
+                            <textarea class="uk-textarea" id="information" type="text" name="information" placeholder="Write a message" ></textarea>
+                            <button class="uk-button uk-button-primary uk-margin-small-top submit" type="submit">Send</button>
                         </form>
                     {{/if}}
                 {{/if}}
@@ -26,8 +42,8 @@
                 <button type="submit">Request Information</button>
             </form>
          {{/if}}
-        <img src="{{idDog.image}}" alt="" width="100px">
-    </section>
+        
+    </article>
 {{/each}}
 {{else}}
 <h2>You don't have any notifications yet</h2>

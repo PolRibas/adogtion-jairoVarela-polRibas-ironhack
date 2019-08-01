@@ -1,12 +1,10 @@
 {{>navShelter}}
 <section>
-    {{!-- pendiente --}}
     <form action="/app/changePhoto/{{dog._id}}" method="POST" enctype="multipart/form-data">
         <label for="image">
             <input onchange="this.form.submit()" type="file" name="image" id="image" style="display:none;"/>
             <img src="{{dog.image}}" width="200px"/>
          </label>
-
     </form>
     <h2>{{dog.name}}</h2>
     <h3>{{dog.breed}}</h3>
@@ -15,40 +13,8 @@
     <p>age: {{dog.age}}</p>
     <p>age: {{dog.age}}</p>
     <p>weight: {{dog.weight}}</p>
-    {{>pencil}}
-    <form action="/app/dogs/{{dog._id}}/update" method="POST">
-        <label>Dog Name:
-            <input type="text" name="name" id="name" placeholder="Dog Name" value="{{dog.name}}">
-        </label>
-        <label>Breed:
-            <input type="text" name="breed" id="breed" placeholder="breed" value="{{dog.breed}}">
-        </label>
-        <label>size:
-            <select type="text" name="size" id="size">
-                <option name="Small" value="Small">Small</option>
-                <option name="Medium" value="Medium">Medium</option>
-                <option name="Large" value="Large">Large</option>
-                <option name="Extra Large" value="Extra Large">Extra Large</option>
-            </select>
-        </label>
-        <label>Gender:
-            <select type="text" name="gender" id="gender">
-                <option name="Male" value="Male">Male</option>
-                <option name="Female" value="Female">Female</option>
-            </select>
-        </label>
-        <label>Description:
-            <textarea name="description" id="description" placeholder="Description">{{dog.description}}</textarea>
-        </label>
-        <label>Age:
-            <input type="text" name="age" id="age" placeholder="age" value="{{dog.age}}">
-        </label>
-        <label>Weight:
-            <input type="text" name="weight" id="weight" placeholder="weight" value="{{dog.weight}}">
-        </label>
-        <button type="submit">Edit Dog</button>
-    </form> 
+</section>
+    {{>dogUpdate}}
+    {{>confirmDeleteDog}}
 
-     <form action="/app/dogs/{{dog._id}}/delete" method="POST">
-        <button type="submit">delete</button>
-    </form>
+

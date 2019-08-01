@@ -1,16 +1,19 @@
 {{>navUser}}
+<h1 class="uk-heading">Notifications</h1>
 {{#if userNotes.notes}}
 {{#each userNotes.notes}}
-<article class="uk-comment notifications">
+<article class="uk-comment dog-notes">
     <header class="uk-comment-header uk-grid-medium uk-flex-middle" uk-grid>
         <div class="uk-width-auto">
             <img class="uk-comment-avatar" src="{{idDog.image}}" width="80" height="80" alt="">
         </div>
         <div class="uk-width-expand">
-            <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="#">{{idDog.shelter.username}}</a></h4>
+            <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="#">{{idDog.name}}</a></h4>
             <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
                 <li><a href="#">12 days ago</a></li>
-                <li><a href="#">Reply</a></li>
+                <li><form class="delete-btn" action="/api/message/{{_id}}/delete">
+        <button class="submit uk-button uk-button-danger uk-button-small" type="submit">Delete</button>
+    </form></li>
             </ul>
         </div>
     </header>
@@ -23,17 +26,16 @@
         {{#if message.[2]}}
         {{else}}
             <form class="chat-form" action="/api/message/{{_id}}">
-                <input id="information" type="text" name="information" placeholder="Write your message" />
-                <button class="submit uk-button" type="submit">Send</button>
+                <textarea class="uk-textarea" id="information" type="text" name="information" placeholder="Write your message"></textarea>
+                <button class="submit uk-button uk-button-primary uk-margin-small-top" type="submit">Send</button>
             </form>
         {{/if}}
     {{/if}}
-    <form class="delete-btn" action="/api/message/{{_id}}/delete">
-        <button class="submit uk-button" type="submit">Delete</button>
-    </form>
 </article>
 {{/each}}
 {{else}}
-<h2>You don't have any notifications yet</h2>
+<div class="no-items">
+<h3>You don't have any notifications</h3>
+</div>
 {{/if}}
 <script src="/javascripts/users/notes.js"></script>
