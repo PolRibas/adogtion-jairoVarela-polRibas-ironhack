@@ -16,17 +16,10 @@
     <form class="delete-btn" action="/api/message/{{_id}}/delete">
         <button class="submit uk-button uk-button-danger uk-margin-small-top" type="submit">Delete</button>
     </form>
-    <a class="uk-button" href="/app/notifications/{{_id}}">CHAT</a>
-            <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="#">{{idDog.name}}</a></h4>
-            <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
-                <li><a href="#">12 days ago</a></li>
-                <li><form class="delete-btn" action="/api/message/{{_id}}/delete">
-        <button class="submit uk-button uk-button-danger uk-button-small" type="submit">Delete</button>
-    </form></li>
-            </ul>
-        </div>
     </header>
-     {{#each message}}
+    </div>
+    
+    {{!--  {{#each message}}
     <div class="uk-comment-body">
         <p>{{this}}</p>
     </div>
@@ -40,7 +33,7 @@
             </form>
         {{/if}}
     {{/if}}
-    </header>
+    </header> --}}
 </article>
 {{/each}}
 {{else}}

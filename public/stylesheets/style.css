@@ -162,10 +162,10 @@ html.transition *:after {
   .dog-list article{
     width: 100%; 
   }
-  .uk-navbar{
+ /*  .uk-navbar{
     position: fixed !important;
     bottom: 0;
-  }
+  } */
 }
 main{
   /* width: 90%; */
