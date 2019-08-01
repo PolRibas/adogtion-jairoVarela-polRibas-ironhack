@@ -27,7 +27,7 @@ body {
   padding: 0;
 /*   width: 100%; */
   height: auto; 
-  display: flex;
+ /*  display: flex; */
   justify-content: center;
   align-items: center;
 }  
@@ -133,7 +133,8 @@ html.transition *:after {
   justify-content: center;
 }
 .profile-img{
-  max-width: 150px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
 }
 
@@ -257,6 +258,7 @@ section{
   display: flex;
   align-items: center;
   justify-items: center;
+  flex-flow: column wrap;
   height: 70vh;
 }
 
@@ -266,4 +268,16 @@ section{
 
 .dog-notes{
   margin: 2%;
+}
+
+.profile-info {
+  margin: 1% 5% 1% 5%;
+}
+
+.hidden{
+  display: none;
+}
+
+.chats{
+  margin: 0 5% 0 5%;
 }
