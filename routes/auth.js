@@ -69,7 +69,6 @@ router.get('/', (req, res, next) => {
     name: req.flash('name'),
     password: req.flash('passwordBad')
   }
-  console.log(data)
   res.render('index', data)
 })
 
@@ -78,7 +77,6 @@ router.post('/login', async (req, res, next) => {
   try {
     const user = await User.findOne({ username })
     const shelter = await Shelter.findOne({ username })
-    console.log(user , shelter)
     if (user) {
       if (bcrypt.compareSync(password, user.password)) {
         req.session.currentUser = user

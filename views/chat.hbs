@@ -1,0 +1,34 @@
+{{#if chat.imUser}}
+{{>navUser}}
+<section class="perfilView">
+<img src={{chat.idDog.shelter.image}} width="100px">
+<h3>{{chat.idDog.shelter.username}}</h3>
+<p>Phone: {{chat.idDog.shelter.phone}}</p>
+<p>Email: {{chat.idDog.shelter.email}}</p>
+<p>Webside: {{chat.idDog.shelter.website}}</p>
+<p>Adress: {{chat.idDog.shelter.address}}</p>
+</section>
+{{else}}
+{{>navShelter}}
+<section class="perfilView">
+<img src={{chat.idUser.image}} width="100px">
+<h3>{{chat.idUser.username}}</h3>
+<p>{{chat.idUser.name}} {{chat.idUser.surName}}</p>
+<p>Phone: {{chat.idUser.phone}}</p>
+<p>City: {{chat.idUser.city}}</p>
+<p>Ocupation: {{chat.idUser.ocupation}}</p>
+<p>Email: {{chat.idUser.email}}</p>
+</section>
+{{/if}}
+<a href="/../../app/notifications"> Back </a>
+<section class="chat-box">
+    {{#each chat.message}}
+        <p class="chat-p">{{this}}</p>
+    {{/each}}
+</section>
+<form id="{{chat._id}}" class="chat-form" action="/api/newChat/{{chat._id}}/{{chat.user._id}}/chat" method="POST">
+    <input id="information" type="text" name="information" placeholder="Write your message" />
+    <button class="submit uk-button" type="submit">Send</button>
+</form>
+
+<script src="/javascripts/chat.js"></script>

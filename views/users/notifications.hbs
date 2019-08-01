@@ -8,29 +8,14 @@
             <img class="uk-comment-avatar" src="{{idDog.image}}" width="80" height="80" alt="">
         </div>
         <div class="uk-width-expand">
-            <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="#">{{idDog.name}}</a></h4>
-            <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
-                <li><a href="#">12 days ago</a></li>
-                <li><form class="delete-btn" action="/api/message/{{_id}}/delete">
-        <button class="submit uk-button uk-button-danger uk-button-small" type="submit">Delete</button>
-    </form></li>
-            </ul>
+
+            <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="#">{{idDog.shelter.username}}</a></h4>
         </div>
     </header>
-     {{#each message}}
-    <div class="uk-comment-body">
-        <p>{{this}}</p>
-    </div>
-    {{/each}}
-    {{#if message.[1]}}
-        {{#if message.[2]}}
-        {{else}}
-            <form class="chat-form" action="/api/message/{{_id}}">
-                <textarea class="uk-textarea" id="information" type="text" name="information" placeholder="Write your message"></textarea>
-                <button class="submit uk-button uk-button-primary uk-margin-small-top" type="submit">Send</button>
-            </form>
-        {{/if}}
-    {{/if}}
+    <form class="delete-btn" action="/api/message/{{_id}}/delete">
+        <button class="submit uk-button" type="submit">Delete</button>
+    </form>
+    <a class="uk-button" href="/app/notifications/{{_id}}">CHAT</a>
 </article>
 {{/each}}
 {{else}}

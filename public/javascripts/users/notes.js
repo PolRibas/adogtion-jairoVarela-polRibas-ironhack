@@ -19,10 +19,8 @@ const main = () => {
         const notes = document.querySelectorAll('.notifications');
         const button = document.querySelectorAll('.delete-btn');
         button.forEach((button, index) => {
-            console.log(button)
             button.addEventListener('submit', async (event) => {
                 event.preventDefault()
-                console.log(event.target.action)
                 const response = await axios.post(`${event.target.action}`)
                 const note = document.createElement('p')
                 notes[index].innerHTML = `<p class="chat">${response.data.message}</p>`;

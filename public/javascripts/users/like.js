@@ -1,7 +1,6 @@
 'use strict';
 
 const main = () => {
-    console.log('funcion')
     const dogCard = document.querySelectorAll('.dog-article')
     const eventToForm = () => { 
         const action = document.querySelectorAll('.chat-form');

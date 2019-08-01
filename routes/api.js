@@ -78,4 +78,35 @@ router.post('/message/:id/delete', async (req, res, next) => {
     }
 })
 
+router.post('/newChat/:chatId/:userId/chat', async (req,res,next) => {
+    try{
+        const chatId = req.params.chatId;
+        const userId = req.params.userId;
+        const user = await User.findById(userId)
+        const shelter = await Shelter.findById(userId)
+        const message = req.body.information
+        if(user){
+            await Notes.findByIdAndUpdate(chatId,{$push: {message: `${user.username}: ${message}`}})
+            res.json({message: `${user.username}: ${message}`})
+        }else if(shelter){
+            await Notes.findByIdAndUpdate(chatId,{$push: {message: `${shelter.username}: ${message}`}})
+            res.json({message: `${shelter.username}: ${message}`})
+        }
+        res.json({message: `Chat deleted`})
+    }catch (err){
+        next(err)
+    }
+})
+
+router.post('/newChats/:chatId/:chatLength', async (req,res,next) => {
+    const chatId = req.params.chatId;
+    const length = req.params.chatLength;
+    const note = await Notes.findById(chatId)
+    if(length < note.message.length){
+        res.json({newOne: true, message: `${note.message[length]}`});
+    }else{
+        res.json();
+    }
+})
+
 module.exports = router
