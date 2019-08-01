@@ -251,9 +251,6 @@ video{
   width: 300px;
 }
 
-.user-profile{
-  margin: 3% 15% 0 15%;
-}
 
 .no-items{
   display: flex;
@@ -304,4 +301,7 @@ video{
 }
 h1{
   margin: 15px 0px 20px 10px !important;
+}
+.user-profile{
+  margin: 3% 10% 0 10%;
 }

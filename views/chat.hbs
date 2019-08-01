@@ -1,7 +1,7 @@
 <section class="user-profile">
 {{#if chat.imUser}}
 {{>navUser}}
-<section class="perfilView">
+<div class="perfilView">
     <div class="chat-profile">
 <img src={{chat.idDog.shelter.image}} class="profile-img">
 <h3>{{chat.idDog.shelter.username}}</h3>
@@ -12,7 +12,7 @@
 <p>Webside: {{chat.idDog.shelter.website}}</p>
 <p>Address: {{chat.idDog.shelter.address}}</p>
 </div>
-</section>
+</div>
 {{else}}
 {{>navShelter}}
 <section class="perfilView">
