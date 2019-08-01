@@ -1,5 +1,6 @@
 {{>navUser}}
-<h1 class="uk-heading">Notifications</h1>
+<div class="chats">
+<h1 class="uk-heading">Messages</h1>
 {{#if userNotes.notes}}
 {{#each userNotes.notes}}
 <article class="uk-comment dog-notes">
@@ -8,19 +9,20 @@
             <img class="uk-comment-avatar" src="{{idDog.image}}" width="80" height="80" alt="">
         </div>
         <div class="uk-width-expand">
-
             <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="#">{{idDog.shelter.username}}</a></h4>
+            <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="#">{{idDog.name}}</a></h4>
         </div>
-    </header>
+    <a class="uk-button uk-button-primary uk-margin-small-top" href="/app/notifications/{{_id}}">CHAT</a>
     <form class="delete-btn" action="/api/message/{{_id}}/delete">
-        <button class="submit uk-button" type="submit">Delete</button>
+        <button class="submit uk-button uk-button-danger uk-margin-small-top" type="submit">Delete</button>
     </form>
-    <a class="uk-button" href="/app/notifications/{{_id}}">CHAT</a>
+    </header>
 </article>
 {{/each}}
 {{else}}
 <div class="no-items">
-<h3>You don't have any notifications</h3>
+<center><h3>You don't have any messages</h3></center>
 </div>
 {{/if}}
+</div>
 <script src="/javascripts/users/notes.js"></script>
