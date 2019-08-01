@@ -1,0 +1,47 @@
+<center><button class="uk-button uk-button-primary uk-margin-top" uk-toggle="target: #updateDog" type="button">Update Dog</button></center>
+    <div id="updateDog" uk-modal>
+   <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body">
+        <h2 class="uk-modal-title">Update Dog</h2>
+<form action="/app/dogs/{{dog._id}}/update" method="POST">
+        <label class="uk-form-label" for="form-horizontal-text">Dog's name</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" type="text" name="name" id="name" value="{{dog.name}}" >
+                </div>
+        <label class="uk-form-label" for="form-horizontal-text">Description
+            <div class="uk-form-controls">
+            <textarea class="uk-textarea"name="description" id="description" placeholder="Description">{{dog.description}}</textarea>
+            </div>
+        </label>
+         <label class="uk-form-label" for="form-horizontal-text">Breed</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" type="text" name="breed" id="breed" placeholder="Breed" value="{{dog.breed}}">
+                </div>
+         <label class="uk-form-label" for="form-horizontal-text">Size</label>
+            <div class="uk-form-controls">
+                <select class="uk-select" type="text" name="size" id="size">
+                <option name="Small" value="Small">Small</option>
+                <option name="Medium" value="Medium">Medium</option>
+                <option name="Large" value="Large">Large</option>
+                <option name="Extra Large" value="Extra Large">Extra Large</option>
+            </select>
+                </div>
+         <label class="uk-form-label" for="form-horizontal-text">Gender</label>
+            <div class="uk-form-controls">
+                <select class="uk-select"type="text" name="gender" id="gender">
+                <option name="Male" value="Male">Male</option>
+                <option name="Female" value="Female">Female</option>
+            </select>
+            </div>
+         <label class="uk-form-label" for="form-horizontal-text">Age</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" type="text" name="age" id="age" placeholder="Age" value="{{dog.age}}">
+                </div>
+         <label class="uk-form-label" for="form-horizontal-text">Weight</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" type="text" name="weight" id="weight" placeholder="Weight" value="{{dog.weight}}">
+                </div>
+        <center><button class="uk-button uk-button-primary uk-margin-top" type="submit">Update</button></center>
+    </form>
+    <button class="uk-modal-close-default" type="button" uk-close></button>
+</div>
+</div>
