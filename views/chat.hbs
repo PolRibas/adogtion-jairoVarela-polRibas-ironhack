@@ -1,7 +1,7 @@
 {{#if chat.imUser}}
 {{>navUser}}
 <section class="perfilView">
-<img src={{chat.idDog.shelter.image}} width="100px">
+<img src={{chat.idDog.shelter.image}} class="profile-img">
 <h3>{{chat.idDog.shelter.username}}</h3>
 <p>Phone: {{chat.idDog.shelter.phone}}</p>
 <p>Email: {{chat.idDog.shelter.email}}</p>
@@ -20,15 +20,15 @@
 <p>Email: {{chat.idUser.email}}</p>
 </section>
 {{/if}}
-<a href="/../../app/notifications"> Back </a>
 <section class="chat-box">
     {{#each chat.message}}
         <p class="chat-p">{{this}}</p>
     {{/each}}
 </section>
 <form id="{{chat._id}}" class="chat-form" action="/api/newChat/{{chat._id}}/{{chat.user._id}}/chat" method="POST">
-    <input id="information" type="text" name="information" placeholder="Write your message" />
-    <button class="submit uk-button" type="submit">Send</button>
+    <input class="uk-input" id="information" type="text" name="information" placeholder="Write your message" /><br>
+    <button class="submit uk-button uk-button-primary uk-margin-small-top" type="submit">Send</button>
 </form>
-
+<br>
+<a href="/../../app/notifications"> Back </a>
 <script src="/javascripts/chat.js"></script>

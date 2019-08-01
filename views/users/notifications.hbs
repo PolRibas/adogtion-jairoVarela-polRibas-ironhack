@@ -1,5 +1,6 @@
 {{>navUser}}
-<h1 class="uk-heading">Notifications</h1>
+<div class="chats">
+<h1 class="uk-heading">Messages</h1>
 {{#if userNotes.notes}}
 {{#each userNotes.notes}}
 <article class="uk-comment dog-notes">
@@ -10,15 +11,20 @@
         <div class="uk-width-expand">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> 5dc478bdf3f01caad73a6d0c322fdac1d0c5c84f
+=======
+>>>>>>> dev-jairo
             <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="#">{{idDog.shelter.username}}</a></h4>
+            <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="#">{{idDog.name}}</a></h4>
         </div>
-    </header>
+    <a class="uk-button uk-button-primary uk-margin-small-top" href="/app/notifications/{{_id}}">CHAT</a>
     <form class="delete-btn" action="/api/message/{{_id}}/delete">
-        <button class="submit uk-button" type="submit">Delete</button>
+        <button class="submit uk-button uk-button-danger uk-margin-small-top" type="submit">Delete</button>
     </form>
+<<<<<<< HEAD
     <a class="uk-button" href="/app/notifications/{{_id}}">CHAT</a>
 <<<<<<< HEAD
 =======
@@ -48,11 +54,15 @@
 >>>>>>> dev-jairo
 =======
 >>>>>>> 5dc478bdf3f01caad73a6d0c322fdac1d0c5c84f
+=======
+    </header>
+>>>>>>> dev-jairo
 </article>
 {{/each}}
 {{else}}
 <div class="no-items">
-<h3>You don't have any notifications</h3>
+<center><h3>You don't have any messages</h3></center>
 </div>
 {{/if}}
+</div>
 <script src="/javascripts/users/notes.js"></script>
