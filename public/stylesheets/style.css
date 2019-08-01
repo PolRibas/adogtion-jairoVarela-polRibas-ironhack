@@ -230,7 +230,7 @@ section{
   height: 100%; */
 }
 video{
-  transform:scale(1.1);
+  transform:scale(1.05);
 }
 @media (min-aspect-ratio: 16/9) {
   #myVideo {
@@ -301,4 +301,7 @@ video{
 .chat-img{
   width: 30px;
   height: auto;
+}
+h1{
+  margin: 15px 0px 20px 10px !important;
 }

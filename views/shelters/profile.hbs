@@ -1,18 +1,20 @@
 {{>navShelter}}
-<section>
-    <h2 class="uk-heading">{{username}}'s Profile</h2>
-    <form action="/app/changePhoto" method="POST" enctype="multipart/form-data">
+<section class="user-profile">
+    <center><form action="/app/changePhoto" method="POST" enctype="multipart/form-data">
         <label for="image">
             <img class="profile-img" src="{{image}}"/>
             <input onchange="this.form.submit()" type="file" name="image" id="image" style="display:none;"/>
          </label>
     </form>
-    <h2>{{username}}</h2>
+   <h2 class="uk-heading">{{username}}'s' Profile</h2>
+   </center>
+   <div class="profile-info">
     <h3>{{name}}</h3>
     <p>Website: <a target="__blank" href="https://www.{{website}}">{{website}}</a></p>
     <p>Address: {{address}}</p>
     <p>Phone: {{phone}}</p>
     <p>Email: {{email}}</p>
+    </div>
 </section>
     {{>shelterUpdate}}
     {{>confirmDelete}}
